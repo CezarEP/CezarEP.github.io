@@ -12,12 +12,12 @@ from pathlib import Path
 RAIZ = Path(__file__).parent
 CONTEUDO = RAIZ / "conteudo"
 
-FONTES = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800"
-          "&family=Public+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap")
+FONTES = ("https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400"
+          "&family=JetBrains+Mono:wght@400;500&display=swap")
 
 ICONE_TEMA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>'
-ICONE_BAIXAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>'
-ICONE_SETA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>'
+ICONE_BAIXAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>'
+ICONE_DIAG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>'
 
 
 def e(texto):
@@ -49,7 +49,7 @@ def cabecalho(perfil, titulo, descricao, url, prefixo):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#1F2A48">
+<meta name="theme-color" content="#E9E5DC">
 <link rel="icon" href="{prefixo}assets/favicon.svg" type="image/svg+xml">
 <script>try{{var t=localStorage.getItem("tema");if(t)document.documentElement.setAttribute("data-theme",t)}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,17 +62,13 @@ def cabecalho(perfil, titulo, descricao, url, prefixo):
 """
 
 
-def topo(perfil, prefixo, menu=True):
+def nav(perfil, prefixo):
     nome = perfil["nome"].split()
-    links = ""
-    if menu:
-        links = (f'<a href="{prefixo}#cases">Cases</a><a href="{prefixo}#experiencia">Experiência</a>'
-                 f'<a href="{prefixo}#contato">Contato</a>')
-    return f"""<header class="topo"><div class="wrap">
-<a class="marca" href="{prefixo or './'}">{e(nome[0])} <span>{e(nome[-1])}</span></a>
-<nav class="menu" aria-label="Principal">{links}<button class="tema" type="button" aria-label="Alternar tema">{ICONE_TEMA}</button></nav>
-</div></header>
-"""
+    return f"""<div class="nav">
+<a class="marca" href="{prefixo or './'}">{e(nome[0])} {e(nome[-1])}</a>
+<nav class="menu" aria-label="Principal"><a href="{prefixo}#sobre">Sobre</a><a href="{prefixo}#cases">Cases</a><a href="{prefixo}#experiencia">Experiência</a></nav>
+<div class="nav-acoes"><button class="tema" type="button" aria-label="Alternar tema">{ICONE_TEMA}</button><a class="pill" href="{prefixo}#contato">Fale comigo {ICONE_DIAG}</a></div>
+</div>"""
 
 
 def rodape(perfil, prefixo):
@@ -97,7 +93,7 @@ def card(caso, principal):
 <p class="contexto">{e(caso["contexto"])}</p>
 <p class="resumo">{e(caso["resumo"])}</p>"""
     bloco_destaque = f"""<div class="destaque"><span class="valor">{e(destaque["valor"])}</span><span class="legenda">{e(destaque["legenda"])}</span></div>"""
-    rodape_card = f"""{chips(caso["tecnologias"][:5])}<span class="ver" aria-hidden="true">Ver case {ICONE_SETA}</span>"""
+    rodape_card = f"""{chips(caso["tecnologias"][:5])}<span class="ver" aria-hidden="true">Ver case {ICONE_DIAG}</span>"""
     if principal:
         return (f'<article class="card principal"><div class="corpo">{corpo}</div>{bloco_destaque}'
                 f'<div class="fim">{rodape_card}</div></article>')
@@ -107,15 +103,16 @@ def card(caso, principal):
 def pagina_inicial(perfil, cases):
     c = perfil["contato"]
     nome = perfil["nome"].split()
-    primeiro, resto = " ".join(nome[:2]), " ".join(nome[2:])
+    m0 = perfil["metricas"][0]
     metricas = "".join(
         f'<li><span class="valor">{e(m["valor"])}</span>'
         + (f'<span class="titulo">{e(m["titulo"])}</span>' if m.get("titulo") else "")
         + f'<span class="legenda">{e(m["legenda"])}</span></li>' for m in perfil["metricas"])
     sobre = "".join(f"<p>{e(p)}</p>" for p in perfil["sobre"])
+    empresas = "".join(f'<span class="e">{e(x)}</span>' for x in perfil.get("empresas", []))
     cards = "".join(card(caso, i == 0) for i, caso in enumerate(cases))
-    tempo = "".join(f"""<li><span class="periodo">{e(x["periodo"])}</span><div class="item"><h3>{e(x["empresa"])}</h3>
-<span class="cargo">{e(x["cargo"])}</span><span class="ctx">{e(x["contexto"])}</span><p>{e(x["resumo"])}</p></div></li>""" for x in perfil["experiencias"])
+    tempo = "".join(f"""<li><span class="periodo">{e(x["periodo"])}</span><div class="quem"><h3>{e(x["empresa"])}</h3>
+<span class="cargo-x">{e(x["cargo"])}</span><span class="ctx">{e(x["contexto"])}</span></div><p>{e(x["resumo"])}</p></li>""" for x in perfil["experiencias"])
     grupos = "".join(f'<div class="grupo"><h3>{e(g["grupo"])}</h3>{chips(g["itens"])}</div>' for g in perfil["habilidades"])
     formacao = ""
     for f in perfil["formacao"]:
@@ -129,53 +126,65 @@ def pagina_inicial(perfil, cases):
         "alumniOf": "Universidade Estadual de Santa Cruz", "sameAs": [c["linkedin"], c["github"]],
     }
     titulo = f'{perfil["nome"]} · {perfil["titulo"]}'
-    return (cabecalho(perfil, titulo, perfil["descricao_seo"], perfil["url_site"], "") + topo(perfil, "") + f"""
-<main id="conteudo">
-<section class="hero"><div class="wrap">
-<div class="hero-texto">
-<span class="rotulo">{e(perfil["titulo"])}</span>
-<h1>{e(primeiro)} <span class="sobrenome">{e(resto)}</span></h1>
+    return (cabecalho(perfil, titulo, perfil["descricao_seo"], perfil["url_site"], "") + f"""
+<header class="topo"><div class="wrap"><div class="cartao">
+{nav(perfil, "")}
+<div class="hero-grid" id="conteudo">
+<div class="hero-txt">
+<span class="rotulo">Dados · automação · processos</span>
+<h1 class="nome"><span>{e(nome[0])}<span class="brilho" aria-hidden="true">✦</span></span><span>{e(nome[-1])}</span></h1>
+<p class="cargo">{e(perfil["titulo"])}</p>
 <p class="proposta">{e(perfil["proposta"])}</p>
-<div class="acoes">
-<a class="botao primario" href="#cases">Ver cases {ICONE_SETA}</a>
-<a class="botao secundario" href="{e(perfil["curriculo_pdf"])}" download>{ICONE_BAIXAR} Baixar currículo (PDF)</a>
+<div class="acoes"><a class="pill" href="#cases">Ver cases {ICONE_DIAG}</a><a class="pill vazada" href="#contato">Contato</a></div>
 </div>
-</div>
-<picture class="hero-foto">
-<source type="image/webp" srcset="assets/foto-220.webp 220w, assets/foto-440.webp 440w" sizes="(max-width: 760px) 200px, 352px">
-<img src="assets/foto-440.jpg" width="440" height="641" alt="Foto de {e(perfil["nome"])}, de camisa preta e braços cruzados, sorrindo, em fundo azul-marinho" fetchpriority="high">
+<figure class="hero-foto">
+<picture>
+<source type="image/webp" srcset="assets/foto-220.webp 220w, assets/foto-440.webp 440w" sizes="(max-width: 820px) 272px, 400px">
+<img src="assets/foto-440.jpg" width="440" height="641" alt="Foto de {e(perfil["nome"])}, de camisa preta e braços cruzados, sorrindo" fetchpriority="high">
 </picture>
+<a class="selo" href="{e(perfil["curriculo_pdf"])}" download>Baixar<br>currículo{ICONE_BAIXAR}</a>
+<div class="stat"><b>{e(m0["valor"])}</b><span>{e(m0.get("titulo", m0["legenda"]))}</span></div>
+</figure>
+</div>
+</div>
+<div class="empresas"><span class="rotulo">Onde já atuei</span>{empresas}</div>
+</div></header>
+
+<main>
+<section class="secao metricas" aria-label="Resultados em números"><div class="wrap">
+<div class="cabeca"><div><span class="rotulo">Resultados</span><h2>O impacto em números</h2></div></div>
+<ul>{metricas}</ul>
 </div></section>
 
-<section class="metricas" aria-label="Resultados em números"><div class="wrap"><ul>{metricas}</ul></div></section>
-
 <section class="secao" id="sobre"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Sobre</span><div><h2>Dado para decidir, processo para repetir</h2></div></div>
-<div class="cabeca"><span></span><div class="sobre-texto">{sobre}</div></div>
+<div class="cabeca"><div><span class="rotulo">Sobre</span></div></div>
+<div class="sobre"><p class="frase">Dado para decidir, <em>processo</em> para repetir.</p><div class="sobre-texto">{sobre}</div></div>
 </div></section>
 
 <section class="secao" id="cases"><div class="wrap">
-<div class="cabeca"><span class="rotulo">{len(cases)} cases</span><div><h2>Projetos</h2><p class="intro">Cada case mostra o problema, o que eu fiz, as ferramentas e o resultado. Documentos de clientes não são publicados.</p></div></div>
+<div class="cabeca"><div><span class="rotulo">{len(cases)} cases</span><h2>Projetos</h2></div><p class="intro">Cada case mostra o problema, o que eu fiz, as ferramentas e o resultado. Documentos de clientes não são publicados.</p></div>
 <div class="cases">{cards}</div>
 </div></section>
 
 <section class="secao" id="experiencia"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Trajetória</span><div><h2>Experiência</h2></div></div>
+<div class="cabeca"><div><span class="rotulo">Trajetória</span><h2>Experiência</h2></div></div>
 <ol class="tempo">{tempo}</ol>
 </div></section>
 
 <section class="secao" id="habilidades"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Ferramentas</span><div><h2>Habilidades</h2></div></div>
+<div class="cabeca"><div><span class="rotulo">Ferramentas</span><h2>Habilidades</h2></div></div>
 <div class="grupos">{grupos}</div>
 </div></section>
 
 <section class="secao" id="formacao"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Estudo</span><div><h2>Formação e certificações</h2></div></div>
+<div class="cabeca"><div><span class="rotulo">Estudo</span><h2>Formação</h2></div></div>
 <ul class="formacao">{formacao}</ul>
 </div></section>
 
-<section class="secao contato" id="contato"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Contato</span><div><h2>Vamos conversar</h2><p class="intro">Aberto a oportunidades em análise de dados, automação e BI.</p></div></div>
+<section class="secao" id="contato"><div class="wrap"><div class="contato-bloco">
+<span class="rotulo">Contato</span>
+<h2>Vamos<br>conversar</h2>
+<p class="intro">Aberto a oportunidades em análise de dados, automação, BI e inteligência para campanhas.</p>
 <div class="email-linha"><a class="email" href="mailto:{e(c["email"])}">{e(c["email"])}</a><button class="copiar" type="button" data-copiar="{e(c["email"])}">Copiar e-mail</button></div>
 <ul class="canais">
 <li><span class="k">Telefone e WhatsApp</span><a href="https://wa.me/{e(c["whatsapp"])}" target="_blank" rel="noopener">{e(c["telefone"])}</a></li>
@@ -183,8 +192,8 @@ def pagina_inicial(perfil, cases):
 <li><span class="k">GitHub</span><a href="{e(c["github"])}" target="_blank" rel="noopener">{e(c["github"].split("github.com/")[-1])}</a></li>
 <li><span class="k">Cidade</span><span class="v">{e(c["cidade"])}</span></li>
 </ul>
-<a class="botao primario" href="{e(perfil["curriculo_pdf"])}" download>{ICONE_BAIXAR} Baixar currículo (PDF)</a>
-</div></section>
+<a class="pill" href="{e(perfil["curriculo_pdf"])}" download>{ICONE_BAIXAR} Baixar currículo (PDF)</a>
+</div></div></section>
 </main>
 <script type="application/ld+json">{json.dumps(pessoa, ensure_ascii=False)}</script>
 """ + rodape(perfil, ""))
@@ -196,23 +205,26 @@ def pagina_case(perfil, cases, i):
     titulo = f'{caso["titulo"]} · {perfil["nome"]}'
     ant = cases[i - 1] if i > 0 else None
     prox = cases[i + 1] if i + 1 < len(cases) else None
-    nav = ""
+    navc = ""
     if ant:
-        nav += f'<a href="{e(ant["slug"])}.html"><span class="k">← Case anterior</span><span class="t">{e(ant["titulo"])}</span></a>'
+        navc += f'<a href="{e(ant["slug"])}.html"><span class="k">← Case anterior</span><span class="t">{e(ant["titulo"])}</span></a>'
     if prox:
-        nav += f'<a class="prox" href="{e(prox["slug"])}.html"><span class="k">Próximo case →</span><span class="t">{e(prox["titulo"])}</span></a>'
+        navc += f'<a class="prox" href="{e(prox["slug"])}.html"><span class="k">Próximo case →</span><span class="t">{e(prox["titulo"])}</span></a>'
     lista = lambda itens, cls="": f'<ul class="lista {cls}">' + "".join(f"<li>{e(x)}</li>" for x in itens) + "</ul>"
     evid = '<div class="nota">' + "".join(f"<p>{e(x)}</p>" for x in caso["evidencias"]) + "</div>"
     d = caso["destaque"]
-    return (cabecalho(perfil, titulo, caso["resumo"], url, "../") + topo(perfil, "../") + f"""
-<main id="conteudo">
-<section class="case-hero"><div class="wrap">
+    return (cabecalho(perfil, titulo, caso["resumo"], url, "../") + f"""
+<header class="topo"><div class="wrap"><div class="cartao">
+{nav(perfil, "../")}
+<div class="case-topo" id="conteudo">
 <a class="voltar" href="../#cases">← Todos os cases</a>
 <span class="rotulo">{e(caso["categoria"])}</span>
 <h1>{e(caso["titulo"])}</h1>
 <p class="contexto">{e(caso["contexto"])}</p>
 <div class="case-destaque"><span class="valor">{e(d["valor"])}</span><span class="legenda">{e(d["legenda"])}</span></div>
-</div></section>
+</div>
+</div></div></header>
+<main>
 <section class="case-corpo secao"><div class="wrap">
 <div class="case-bloco"><h2>Problema</h2><div><p>{e(caso["problema"])}</p></div></div>
 <div class="case-bloco"><h2>O que eu fiz</h2><div>{lista(caso["solucao"])}</div></div>
@@ -220,7 +232,7 @@ def pagina_case(perfil, cases, i):
 <div class="case-bloco"><h2>Tecnologias</h2><div>{chips(caso["tecnologias"])}</div></div>
 <div class="case-bloco"><h2>Evidências</h2><div>{evid}</div></div>
 </div></section>
-<div class="wrap"><nav class="navcases" aria-label="Outros cases">{nav}</nav></div>
+<div class="wrap"><nav class="navcases" aria-label="Outros cases">{navc}</nav></div>
 </main>
 """ + rodape(perfil, "../"))
 

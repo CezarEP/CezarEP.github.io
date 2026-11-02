@@ -15,83 +15,95 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#1F2A48">
+<meta name="theme-color" content="#E9E5DC">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem("tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/estilo.css">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-<header class="topo"><div class="wrap">
-<a class="marca" href="./">Cézar <span>Gonçalves</span></a>
-<nav class="menu" aria-label="Principal"><a href="#cases">Cases</a><a href="#experiencia">Experiência</a><a href="#contato">Contato</a><button class="tema" type="button" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button></nav>
+
+<header class="topo"><div class="wrap"><div class="cartao">
+<div class="nav">
+<a class="marca" href="./">Cézar Gonçalves</a>
+<nav class="menu" aria-label="Principal"><a href="#sobre">Sobre</a><a href="#cases">Cases</a><a href="#experiencia">Experiência</a></nav>
+<div class="nav-acoes"><button class="tema" type="button" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button><a class="pill" href="#contato">Fale comigo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a></div>
+</div>
+<div class="hero-grid" id="conteudo">
+<div class="hero-txt">
+<span class="rotulo">Dados · automação · processos</span>
+<h1 class="nome"><span>Cézar<span class="brilho" aria-hidden="true">✦</span></span><span>Gonçalves</span></h1>
+<p class="cargo">Analista de dados e automação</p>
+<p class="proposta">Transformo operações que funcionam no improviso em sistemas medidos: coleta automática, painéis e decisões apoiadas em dado.</p>
+<div class="acoes"><a class="pill" href="#cases">Ver cases <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a><a class="pill vazada" href="#contato">Contato</a></div>
+</div>
+<figure class="hero-foto">
+<picture>
+<source type="image/webp" srcset="assets/foto-220.webp 220w, assets/foto-440.webp 440w" sizes="(max-width: 820px) 272px, 400px">
+<img src="assets/foto-440.jpg" width="440" height="641" alt="Foto de Cézar Santos Gonçalves, de camisa preta e braços cruzados, sorrindo" fetchpriority="high">
+</picture>
+<a class="selo" href="assets/curriculo-cezar-santos-goncalves.pdf" download>Baixar<br>currículo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></a>
+<div class="stat"><b>70%</b><span>menos custo por alcance</span></div>
+</figure>
+</div>
+</div>
+<div class="empresas"><span class="rotulo">Onde já atuei</span><span class="e">Agência Luz</span><span class="e">Produtora Sangue Novo</span><span class="e">Campanha Governo de RO</span><span class="e">KIP Viagens</span><span class="e">Veracel Celulose</span><span class="e">NTE 05</span></div>
 </div></header>
 
-<main id="conteudo">
-<section class="hero"><div class="wrap">
-<div class="hero-texto">
-<span class="rotulo">Analista de dados e automação</span>
-<h1>Cézar Santos <span class="sobrenome">Gonçalves</span></h1>
-<p class="proposta">Transformo operações que funcionam no improviso em sistemas medidos: coleta automática, painéis e decisões apoiadas em dado.</p>
-<div class="acoes">
-<a class="botao primario" href="#cases">Ver cases <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
-<a class="botao secundario" href="assets/curriculo-cezar-santos-goncalves.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg> Baixar currículo (PDF)</a>
-</div>
-</div>
-<picture class="hero-foto">
-<source type="image/webp" srcset="assets/foto-220.webp 220w, assets/foto-440.webp 440w" sizes="(max-width: 760px) 200px, 352px">
-<img src="assets/foto-440.jpg" width="440" height="641" alt="Foto de Cézar Santos Gonçalves, de camisa preta e braços cruzados, sorrindo, em fundo azul-marinho" fetchpriority="high">
-</picture>
+<main>
+<section class="secao metricas" aria-label="Resultados em números"><div class="wrap">
+<div class="cabeca"><div><span class="rotulo">Resultados</span><h2>O impacto em números</h2></div></div>
+<ul><li><span class="valor">70%</span><span class="titulo">menos custo por alcance</span><span class="legenda">alcançar mil pessoas passou de R$ 15,71 para R$ 4,72</span></li><li><span class="valor">43%</span><span class="titulo">dos anúncios eram vistos por quem não votava</span><span class="legenda">impressões fora da área eleitoral; corrigi a segmentação e a verba voltou para o eleitorado</span></li><li><span class="valor">73%</span><span class="titulo">mais rápido para ouvir o público</span><span class="legenda">comentários de todos os posts num só painel, de 45 para 12 minutos</span></li><li><span class="valor">85×</span><span class="titulo">diferença entre anúncios</span><span class="legenda">uma métrica que criei mostrou onde a verba rendia mais, e ela foi realocada</span></li></ul>
 </div></section>
 
-<section class="metricas" aria-label="Resultados em números"><div class="wrap"><ul><li><span class="valor">70%</span><span class="titulo">menos custo por alcance</span><span class="legenda">alcançar mil pessoas passou de R$ 15,71 para R$ 4,72</span></li><li><span class="valor">43%</span><span class="titulo">dos anúncios eram vistos por quem não votava</span><span class="legenda">impressões fora da área eleitoral; corrigi a segmentação e a verba voltou para o eleitorado</span></li><li><span class="valor">73%</span><span class="titulo">mais rápido para ouvir o público</span><span class="legenda">comentários de todos os posts num só painel, de 45 para 12 minutos</span></li><li><span class="valor">85×</span><span class="titulo">diferença entre anúncios</span><span class="legenda">uma métrica que criei mostrou onde a verba rendia mais, e ela foi realocada</span></li></ul></div></section>
-
 <section class="secao" id="sobre"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Sobre</span><div><h2>Dado para decidir, processo para repetir</h2></div></div>
-<div class="cabeca"><span></span><div class="sobre-texto"><p>Sou engenheiro de produção formado pela UESC e trabalho com dados, automação e processos.</p><p>Atuei na indústria de celulose, no setor público, em agência de viagens e em campanhas eleitorais, sempre onde a operação precisava decidir rápido.</p><p>Programo em Python e Node.js, construo painéis em Power BI e aplicativos em Power Apps, e uso Lean Six Sigma para medir antes de mudar.</p></div></div>
+<div class="cabeca"><div><span class="rotulo">Sobre</span></div></div>
+<div class="sobre"><p class="frase">Dado para decidir, <em>processo</em> para repetir.</p><div class="sobre-texto"><p>Sou engenheiro de produção formado pela UESC e trabalho com dados, automação e processos.</p><p>Atuei na indústria de celulose, no setor público, em agência de viagens e em campanhas eleitorais, sempre onde a operação precisava decidir rápido.</p><p>Programo em Python e Node.js, construo painéis em Power BI e aplicativos em Power Apps, e uso Lean Six Sigma para medir antes de mudar.</p></div></div>
 </div></section>
 
 <section class="secao" id="cases"><div class="wrap">
-<div class="cabeca"><span class="rotulo">3 cases</span><div><h2>Projetos</h2><p class="intro">Cada case mostra o problema, o que eu fiz, as ferramentas e o resultado. Documentos de clientes não são publicados.</p></div></div>
+<div class="cabeca"><div><span class="rotulo">3 cases</span><h2>Projetos</h2></div><p class="intro">Cada case mostra o problema, o que eu fiz, as ferramentas e o resultado. Documentos de clientes não são publicados.</p></div>
 <div class="cases"><article class="card principal"><div class="corpo"><span class="rotulo">Campanha majoritária · operação completa</span>
 <h3><a href="cases/campanha-rondonia.html">Inteligência de dados e processos na campanha ao Governo de Rondônia</a></h3>
 <p class="contexto">Campanha ao Governo de Rondônia · equipe de 30 pessoas em 5 núcleos · ago–out 2026</p>
-<p class="resumo">Da escuta do público à decupagem dos concorrentes: dados e processos para a campanha decidir mais rápido e produzir com mais segurança.</p></div><div class="destaque"><span class="valor">73%</span><span class="legenda">mais rápido para reunir os comentários de todos os posts num só painel: a atualização caiu de 45 para 12 minutos</span></div><div class="fim"><ul class="chips"><li>Python</li><li>Meta Graph API</li><li>faster-whisper</li><li>ffmpeg</li><li>Node.js</li></ul><span class="ver" aria-hidden="true">Ver case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div></article><article class="card"><span class="rotulo">Análise de performance</span>
+<p class="resumo">Da escuta do público à decupagem dos concorrentes: dados e processos para a campanha decidir mais rápido e produzir com mais segurança.</p></div><div class="destaque"><span class="valor">73%</span><span class="legenda">mais rápido para reunir os comentários de todos os posts num só painel: a atualização caiu de 45 para 12 minutos</span></div><div class="fim"><ul class="chips"><li>Python</li><li>Meta Graph API</li><li>faster-whisper</li><li>ffmpeg</li><li>Node.js</li></ul><span class="ver" aria-hidden="true">Ver case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></div></article><article class="card"><span class="rotulo">Análise de performance</span>
 <h3><a href="cases/midia-paga.html">Mídia paga orientada a dado em duas campanhas na Bahia</a></h3>
 <p class="contexto">Agência Luz e Produtora Sangue Novo · campanhas a deputado federal e estadual (BA) · mai–out 2026</p>
-<p class="resumo">Métricas próprias para achar onde a verba rendia e onde vazava, com realocação de orçamento baseada em teste.</p><div class="destaque"><span class="valor">70%</span><span class="legenda">menos custo para alcançar mil pessoas: de R$ 15,71 para R$ 4,72</span></div><ul class="chips"><li>Meta Ads</li><li>Excel avançado</li><li>Séries diárias</li><li>Médias móveis</li><li>Normalização de custo</li></ul><span class="ver" aria-hidden="true">Ver case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></article><article class="card"><span class="rotulo">Low-code e BI</span>
+<p class="resumo">Métricas próprias para achar onde a verba rendia e onde vazava, com realocação de orçamento baseada em teste.</p><div class="destaque"><span class="valor">70%</span><span class="legenda">menos custo para alcançar mil pessoas: de R$ 15,71 para R$ 4,72</span></div><ul class="chips"><li>Meta Ads</li><li>Excel avançado</li><li>Séries diárias</li><li>Médias móveis</li><li>Normalização de custo</li></ul><span class="ver" aria-hidden="true">Ver case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></article><article class="card"><span class="rotulo">Low-code e BI</span>
 <h3><a href="cases/inspecao-5s.html">Aplicativo de inspeção 5S em Power Apps</a></h3>
 <p class="contexto">Veracel Celulose · laboratório de controle técnico da qualidade · 2023</p>
-<p class="resumo">A inspeção 5S feita à mão e lançada em planilha virou um aplicativo ligado a um painel em Power BI.</p><div class="destaque"><span class="valor">5 de 5</span><span class="legenda">responsáveis pelo 5S avaliaram o processo novo como mais ágil</span></div><ul class="chips"><li>Power Apps</li><li>SharePoint</li><li>Power BI</li><li>5S</li></ul><span class="ver" aria-hidden="true">Ver case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></article></div>
+<p class="resumo">A inspeção 5S feita à mão e lançada em planilha virou um aplicativo ligado a um painel em Power BI.</p><div class="destaque"><span class="valor">5 de 5</span><span class="legenda">responsáveis pelo 5S avaliaram o processo novo como mais ágil</span></div><ul class="chips"><li>Power Apps</li><li>SharePoint</li><li>Power BI</li><li>5S</li></ul><span class="ver" aria-hidden="true">Ver case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></article></div>
 </div></section>
 
 <section class="secao" id="experiencia"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Trajetória</span><div><h2>Experiência</h2></div></div>
-<ol class="tempo"><li><span class="periodo">mai 2026 – out 2026</span><div class="item"><h3>Agência Luz</h3>
-<span class="cargo">Estrategista de Mídia Paga, Inteligência e Performance Digital</span><span class="ctx">Campanha a deputado federal (BA)</span><p>Auditoria da operação de Meta Ads em 26 municípios, matriz de desempenho por tema e território, métrica de custo marginal por pessoa alcançada e relatórios de inteligência territorial.</p></div></li><li><span class="periodo">ago 2026 – out 2026</span><div class="item"><h3>Campanha ao Governo de Rondônia</h3>
-<span class="cargo">Gestor de Processos e Inteligência de Dados</span><span class="ctx">Campanha majoritária</span><p>Estruturação da operação digital de uma equipe de 30 pessoas: painel único de comentários para a moderação, decupagem dos vídeos da campanha e dos concorrentes, inventário de anúncios e auditoria do site.</p></div></li><li><span class="periodo">jun 2026 – out 2026</span><div class="item"><h3>Produtora Sangue Novo</h3>
-<span class="cargo">Gestor de Mídia Paga e Inteligência de Performance</span><span class="ctx">Campanha a deputado estadual (BA)</span><p>Operação integral de Meta Ads em oito municípios, benchmark interno com médias móveis, teste comparativo de objetivos e conformidade com as regras do TSE e da LGPD.</p></div></li><li><span class="periodo">mar 2025 – jun 2026</span><div class="item"><h3>KIP Viagens</h3>
-<span class="cargo">Analista de Emissões e Gestão de Milhas</span><span class="ctx">Agência de viagens</span><p>Emissão de passagens e atendimento comercial. Desenvolvi em Python um robô de Telegram para ofertas e propostas, uma automação de rastreio de no-show e um painel de vendas em Power BI.</p></div></li><li><span class="periodo">mai 2022 – dez 2023</span><div class="item"><h3>Veracel Celulose</h3>
-<span class="cargo">Estagiário de Controle Técnico de Qualidade</span><span class="ctx">Indústria de celulose</span><p>Indicadores de qualidade e produtividade, digitalização da inspeção 5S em Power Apps, painéis em Power BI e aplicação para controle de qualidade de fardos no porto.</p></div></li><li><span class="periodo">ago 2021 – abr 2022</span><div class="item"><h3>Núcleo de Tecnologia Educacional (NTE 05)</h3>
-<span class="cargo">Técnico Administrativo</span><span class="ctx">Setor público</span><p>Gestão de dados educacionais de 26 municípios e 61 escolas, com painéis em Power BI, aplicativos em Power Apps e automações em Power Automate.</p></div></li><li><span class="periodo">mar 2019 – jan 2021</span><div class="item"><h3>Peixaria Frutos do Mar</h3>
-<span class="cargo">Gerente</span><span class="ctx">Comércio e produção</span><p>Reestruturação de processos, padronização para reduzir desperdício e retrabalho, estudo técnico e econômico de nova linha de produção e gestão do fluxo de caixa.</p></div></li></ol>
+<div class="cabeca"><div><span class="rotulo">Trajetória</span><h2>Experiência</h2></div></div>
+<ol class="tempo"><li><span class="periodo">mai 2026 – out 2026</span><div class="quem"><h3>Agência Luz</h3>
+<span class="cargo-x">Estrategista de Mídia Paga, Inteligência e Performance Digital</span><span class="ctx">Campanha a deputado federal (BA)</span></div><p>Auditoria da operação de Meta Ads em 26 municípios, matriz de desempenho por tema e território, métrica de custo marginal por pessoa alcançada e relatórios de inteligência territorial.</p></li><li><span class="periodo">ago 2026 – out 2026</span><div class="quem"><h3>Campanha ao Governo de Rondônia</h3>
+<span class="cargo-x">Gestor de Processos e Inteligência de Dados</span><span class="ctx">Campanha majoritária</span></div><p>Estruturação da operação digital de uma equipe de 30 pessoas: painel único de comentários para a moderação, decupagem dos vídeos da campanha e dos concorrentes, inventário de anúncios e auditoria do site.</p></li><li><span class="periodo">jun 2026 – out 2026</span><div class="quem"><h3>Produtora Sangue Novo</h3>
+<span class="cargo-x">Gestor de Mídia Paga e Inteligência de Performance</span><span class="ctx">Campanha a deputado estadual (BA)</span></div><p>Operação integral de Meta Ads em oito municípios, benchmark interno com médias móveis, teste comparativo de objetivos e conformidade com as regras do TSE e da LGPD.</p></li><li><span class="periodo">mar 2025 – jun 2026</span><div class="quem"><h3>KIP Viagens</h3>
+<span class="cargo-x">Analista de Emissões e Gestão de Milhas</span><span class="ctx">Agência de viagens</span></div><p>Emissão de passagens e atendimento comercial. Desenvolvi em Python um robô de Telegram para ofertas e propostas, uma automação de rastreio de no-show e um painel de vendas em Power BI.</p></li><li><span class="periodo">mai 2022 – dez 2023</span><div class="quem"><h3>Veracel Celulose</h3>
+<span class="cargo-x">Estagiário de Controle Técnico de Qualidade</span><span class="ctx">Indústria de celulose</span></div><p>Indicadores de qualidade e produtividade, digitalização da inspeção 5S em Power Apps, painéis em Power BI e aplicação para controle de qualidade de fardos no porto.</p></li><li><span class="periodo">ago 2021 – abr 2022</span><div class="quem"><h3>Núcleo de Tecnologia Educacional (NTE 05)</h3>
+<span class="cargo-x">Técnico Administrativo</span><span class="ctx">Setor público</span></div><p>Gestão de dados educacionais de 26 municípios e 61 escolas, com painéis em Power BI, aplicativos em Power Apps e automações em Power Automate.</p></li><li><span class="periodo">mar 2019 – jan 2021</span><div class="quem"><h3>Peixaria Frutos do Mar</h3>
+<span class="cargo-x">Gerente</span><span class="ctx">Comércio e produção</span></div><p>Reestruturação de processos, padronização para reduzir desperdício e retrabalho, estudo técnico e econômico de nova linha de produção e gestão do fluxo de caixa.</p></li></ol>
 </div></section>
 
 <section class="secao" id="habilidades"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Ferramentas</span><div><h2>Habilidades</h2></div></div>
+<div class="cabeca"><div><span class="rotulo">Ferramentas</span><h2>Habilidades</h2></div></div>
 <div class="grupos"><div class="grupo"><h3>Dados e automação</h3><ul class="chips"><li>Python</li><li>SQL</li><li>Node.js</li><li>APIs REST</li><li>Meta Graph API</li><li>Telethon</li><li>Excel avançado</li></ul></div><div class="grupo"><h3>BI e low-code</h3><ul class="chips"><li>Power BI</li><li>Power Apps</li><li>Power Automate</li><li>SharePoint</li></ul></div><div class="grupo"><h3>Mídia paga e web analytics</h3><ul class="chips"><li>Meta Ads</li><li>Google Analytics 4</li><li>Análise de performance</li><li>ManyChat</li></ul></div><div class="grupo"><h3>IA e documentos</h3><ul class="chips"><li>faster-whisper</li><li>ffmpeg</li><li>Node.js (docx)</li><li>LibreOffice</li><li>Geração de PDF</li></ul></div><div class="grupo"><h3>Métodos e conformidade</h3><ul class="chips"><li>Lean Six Sigma</li><li>5S</li><li>Gestão por indicadores</li><li>LGPD</li><li>Conformidade eleitoral</li></ul></div></div>
 </div></section>
 
 <section class="secao" id="formacao"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Estudo</span><div><h2>Formação e certificações</h2></div></div>
+<div class="cabeca"><div><span class="rotulo">Estudo</span><h2>Formação</h2></div></div>
 <ul class="formacao"><li><h3>Bacharelado em Engenharia de Produção</h3><span class="inst">Universidade Estadual de Santa Cruz (UESC), 2025</span><span class="det">TCC: Power Apps como ferramenta de apoio na gestão do 5S em um laboratório de uma fábrica de celulose.</span></li><li><h3>Lean Six Sigma White Belt e Yellow Belt</h3></li></ul>
 </div></section>
 
-<section class="secao contato" id="contato"><div class="wrap">
-<div class="cabeca"><span class="rotulo">Contato</span><div><h2>Vamos conversar</h2><p class="intro">Aberto a oportunidades em análise de dados, automação e BI.</p></div></div>
+<section class="secao" id="contato"><div class="wrap"><div class="contato-bloco">
+<span class="rotulo">Contato</span>
+<h2>Vamos<br>conversar</h2>
+<p class="intro">Aberto a oportunidades em análise de dados, automação, BI e inteligência para campanhas.</p>
 <div class="email-linha"><a class="email" href="mailto:csgoncalves1020@gmail.com">csgoncalves1020@gmail.com</a><button class="copiar" type="button" data-copiar="csgoncalves1020@gmail.com">Copiar e-mail</button></div>
 <ul class="canais">
 <li><span class="k">Telefone e WhatsApp</span><a href="https://wa.me/5573981454794" target="_blank" rel="noopener">(73) 98145-4794</a></li>
@@ -99,8 +111,8 @@
 <li><span class="k">GitHub</span><a href="https://github.com/CezarEP" target="_blank" rel="noopener">CezarEP</a></li>
 <li><span class="k">Cidade</span><span class="v">Itabuna, BA</span></li>
 </ul>
-<a class="botao primario" href="assets/curriculo-cezar-santos-goncalves.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg> Baixar currículo (PDF)</a>
-</div></section>
+<a class="pill" href="assets/curriculo-cezar-santos-goncalves.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg> Baixar currículo (PDF)</a>
+</div></div></section>
 </main>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Cézar Santos Gonçalves", "jobTitle": "Analista de dados e automação", "url": "https://cezarep.github.io/", "email": "mailto:csgoncalves1020@gmail.com", "image": "https://cezarep.github.io/assets/foto-440.jpg", "address": {"@type": "PostalAddress", "addressLocality": "Itabuna", "addressRegion": "BA", "addressCountry": "BR"}, "alumniOf": "Universidade Estadual de Santa Cruz", "sameAs": ["https://www.linkedin.com/in/cezarsgoncalves/", "https://github.com/CezarEP"]}</script>
 <footer class="rodape"><div class="wrap">
