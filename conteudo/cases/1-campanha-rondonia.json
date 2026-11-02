@@ -1,0 +1,30 @@
+{
+  "slug": "campanha-rondonia",
+  "titulo": "Inteligência de dados e processos na campanha ao Governo de Rondônia",
+  "categoria": "Campanha majoritária · operação completa",
+  "contexto": "Campanha ao Governo de Rondônia · equipe de 30 pessoas em 5 núcleos · ago–out 2026",
+  "resumo": "Da escuta do público à decupagem dos concorrentes: dados e processos para a campanha decidir mais rápido e produzir com mais segurança.",
+  "destaque": { "valor": "73%", "legenda": "mais rápido para reunir os comentários de todos os posts num só painel: a atualização caiu de 45 para 12 minutos" },
+  "problema": "A operação digital produzia muito, mas sem processos, sem indicadores e sem uma visão do que o público dizia. Os comentários ficavam espalhados em cada post, as gravações da campanha e dos concorrentes precisavam ser assistidas inteiras, e ninguém sabia ao certo o que estava em anúncio.",
+  "solucao": [
+    "Escuta do público: coleta automática dos comentários do Instagram e do Facebook pela API da Meta, reunidos num painel único com fila de prioridade e filtro de pendências. A equipe de moderação passou a responder tudo de um lugar só.",
+    "Leitura dos comentários para orientar o conteúdo: quais temas geravam crítica, onde estava o atrito e como o público reagia a cada material, como medida do nível de satisfação.",
+    "Decupagem dos vídeos da campanha e dos concorrentes (debates, sabatinas, entrevistas): transcrição automática e trechos classificados por potencial de uso, para acelerar decisões estratégicas e a produção de cortes para as redes.",
+    "Correção do indicador de atendimento: cruzamento das respostas registradas pela API com as visíveis na rede.",
+    "Inventário automatizado dos anúncios ativos, auditoria do site com Google Analytics 4, checagem factual das peças e conformidade com as regras de uso de IA.",
+    "Mapeamento de processos e indicadores para os 5 núcleos, com documentação entregue na transição da equipe."
+  ],
+  "resultados": [
+    "Comentários de todos os posts num só painel, com a atualização caindo de 45 para 12 minutos.",
+    "Decisões estratégicas e cortes para as redes produzidos sem assistir a horas de gravação, inclusive dos concorrentes.",
+    "31% das respostas não eram contabilizadas por saírem de outro perfil; o indicador de atendimento foi corrigido.",
+    "536 anúncios em 160 peças passaram a ser rastreáveis pela equipe.",
+    "52 páginas do site auditadas, com relatório de inconsistências entregue para correção.",
+    "Peças com dados sem comprovação deixaram de ser publicadas."
+  ],
+  "tecnologias": ["Python", "Meta Graph API", "faster-whisper", "ffmpeg", "Node.js", "Google Analytics 4", "Mapeamento de processos"],
+  "evidencias": [
+    "Relatório interno de leitura dos comentários, documento técnico do sistema de decupagem e documentação operacional entregue à campanha.",
+    "Os documentos não são publicados: são internos da campanha e contêm perfis e comentários de terceiros."
+  ]
+}

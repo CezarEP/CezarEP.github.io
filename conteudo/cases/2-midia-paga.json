@@ -4,7 +4,7 @@
   "categoria": "Análise de performance",
   "contexto": "Agência Luz e Produtora Sangue Novo · campanhas a deputado federal e estadual (BA) · mai–out 2026",
   "resumo": "Métricas próprias para achar onde a verba rendia e onde vazava, com realocação de orçamento baseada em teste.",
-  "destaque": { "valor": "85×", "legenda": "diferença de eficiência entre conjuntos de anúncios, exposta por uma métrica criada para a operação" },
+  "destaque": { "valor": "70%", "legenda": "menos custo para alcançar mil pessoas: de R$ 15,71 para R$ 4,72" },
   "problema": "As duas contas de Meta Ads distribuíam verba e criativos de forma uniforme entre municípios com custos muito diferentes. Não havia como saber se o orçamento chegava ao eleitorado certo nem qual conjunto rendia mais por real investido.",
   "solucao": [
     "Criei a leitura de custo marginal por pessoa nova alcançada, calculada a partir do crescimento diário de alcance.",

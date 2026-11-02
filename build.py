@@ -108,7 +108,10 @@ def pagina_inicial(perfil, cases):
     c = perfil["contato"]
     nome = perfil["nome"].split()
     primeiro, resto = " ".join(nome[:2]), " ".join(nome[2:])
-    metricas = "".join(f'<li><span class="valor">{e(m["valor"])}</span><span class="legenda">{e(m["legenda"])}</span></li>' for m in perfil["metricas"])
+    metricas = "".join(
+        f'<li><span class="valor">{e(m["valor"])}</span>'
+        + (f'<span class="titulo">{e(m["titulo"])}</span>' if m.get("titulo") else "")
+        + f'<span class="legenda">{e(m["legenda"])}</span></li>' for m in perfil["metricas"])
     sobre = "".join(f"<p>{e(p)}</p>" for p in perfil["sobre"])
     cards = "".join(card(caso, i == 0) for i, caso in enumerate(cases))
     tempo = "".join(f"""<li><span class="periodo">{e(x["periodo"])}</span><div class="item"><h3>{e(x["empresa"])}</h3>

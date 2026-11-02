@@ -90,7 +90,8 @@ p, ul, ol { margin: 0; }
 .metricas li + li { border-left: 1px solid rgba(242,244,248,.1); }
 .metricas .valor { font-family: var(--display); font-weight: 700; color: var(--gold); font-size: clamp(1.25rem, 2vw, 1.75rem); letter-spacing: -0.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
 @media (min-width: 861px) { .metricas .valor { white-space: nowrap; } }
-.metricas .legenda { font-size: .88rem; color: var(--on-navy-muted); line-height: 1.4; }
+.metricas .titulo { font-weight: 700; color: var(--on-navy); font-size: .98rem; line-height: 1.25; }
+.metricas .legenda { font-size: .86rem; color: var(--on-navy-muted); line-height: 1.4; }
 @media (max-width: 860px) {
   .metricas ul { grid-template-columns: 1fr 1fr; }
   .metricas li:nth-child(3) { border-left: 0; }

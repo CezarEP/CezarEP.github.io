@@ -5,10 +5,10 @@
   "proposta": "Transformo operações que funcionam no improviso em sistemas medidos: coleta automática, painéis e decisões apoiadas em dado.",
   "descricao_seo": "Portfólio de Cézar Santos Gonçalves, engenheiro de produção que trabalha com dados, automação em Python, Power BI e análise de mídia paga.",
   "metricas": [
-    { "valor": "45 min → 40 s", "legenda": "ciclo de publicação do painel de moderação" },
-    { "valor": "85×", "legenda": "diferença de eficiência exposta por uma métrica criada para a operação" },
-    { "valor": "R$ 15,71 → R$ 4,72", "legenda": "custo por mil pessoas alcançadas" },
-    { "valor": "43%", "legenda": "das impressões fora da área eleitoral, identificadas e corrigidas" }
+    { "valor": "70%", "titulo": "menos custo por alcance", "legenda": "alcançar mil pessoas passou de R$ 15,71 para R$ 4,72" },
+    { "valor": "43%", "titulo": "dos anúncios eram vistos por quem não votava", "legenda": "impressões fora da área eleitoral; corrigi a segmentação e a verba voltou para o eleitorado" },
+    { "valor": "73%", "titulo": "mais rápido para ouvir o público", "legenda": "comentários de todos os posts num só painel, de 45 para 12 minutos" },
+    { "valor": "85×", "titulo": "diferença entre anúncios", "legenda": "uma métrica que criei mostrou onde a verba rendia mais, e ela foi realocada" }
   ],
   "sobre": [
     "Sou engenheiro de produção formado pela UESC e trabalho com dados, automação e processos.",
@@ -28,7 +28,7 @@
       "cargo": "Gestor de Processos e Inteligência de Dados",
       "periodo": "ago 2026 – out 2026",
       "contexto": "Campanha majoritária",
-      "resumo": "Estruturação da operação digital de uma equipe de 30 pessoas, coleta automática de comentários via Graph API, painel de moderação, inventário de anúncios e auditoria do site."
+      "resumo": "Estruturação da operação digital de uma equipe de 30 pessoas: painel único de comentários para a moderação, decupagem dos vídeos da campanha e dos concorrentes, inventário de anúncios e auditoria do site."
     },
     {
       "empresa": "Produtora Sangue Novo",
