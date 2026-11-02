@@ -1,0 +1,241 @@
+"""Gera o site a partir dos arquivos em conteudo/.
+
+Uso:  python build.py
+Edite conteudo/perfil.json e conteudo/cases/*.json; depois rode este script.
+Gera index.html, cases/<slug>.html, sitemap.xml e robots.txt. Só usa a biblioteca padrão.
+"""
+import json
+from datetime import date
+from html import escape
+from pathlib import Path
+
+RAIZ = Path(__file__).parent
+CONTEUDO = RAIZ / "conteudo"
+
+FONTES = ("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800"
+          "&family=Public+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap")
+
+ICONE_TEMA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>'
+ICONE_BAIXAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>'
+ICONE_SETA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>'
+
+
+def e(texto):
+    return escape(str(texto), quote=True)
+
+
+def carregar():
+    perfil = json.loads((CONTEUDO / "perfil.json").read_text(encoding="utf-8"))
+    cases = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((CONTEUDO / "cases").glob("*.json"))]
+    return perfil, cases
+
+
+def cabecalho(perfil, titulo, descricao, url, prefixo):
+    imagem = perfil["url_site"] + "assets/og.jpg"
+    return f"""<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{e(titulo)}</title>
+<meta name="description" content="{e(descricao)}">
+<link rel="canonical" href="{e(url)}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="{e(titulo)}">
+<meta property="og:description" content="{e(descricao)}">
+<meta property="og:url" content="{e(url)}">
+<meta property="og:image" content="{e(imagem)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1F2A48">
+<link rel="icon" href="{prefixo}assets/favicon.svg" type="image/svg+xml">
+<script>try{{var t=localStorage.getItem("tema");if(t)document.documentElement.setAttribute("data-theme",t)}}catch(e){{}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{FONTES}">
+<link rel="stylesheet" href="{prefixo}assets/estilo.css">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+"""
+
+
+def topo(perfil, prefixo, menu=True):
+    nome = perfil["nome"].split()
+    links = ""
+    if menu:
+        links = (f'<a href="{prefixo}#cases">Cases</a><a href="{prefixo}#experiencia">Experiência</a>'
+                 f'<a href="{prefixo}#contato">Contato</a>')
+    return f"""<header class="topo"><div class="wrap">
+<a class="marca" href="{prefixo or './'}">{e(nome[0])} <span>{e(nome[-1])}</span></a>
+<nav class="menu" aria-label="Principal">{links}<button class="tema" type="button" aria-label="Alternar tema">{ICONE_TEMA}</button></nav>
+</div></header>
+"""
+
+
+def rodape(perfil, prefixo):
+    return f"""<footer class="rodape"><div class="wrap">
+<span>© {date.today().year} {e(perfil["nome"])}</span>
+<span>{e(perfil["contato"]["cidade"])}</span>
+</div></footer>
+<script src="{prefixo}assets/site.js" defer></script>
+</body>
+</html>
+"""
+
+
+def chips(itens):
+    return '<ul class="chips">' + "".join(f"<li>{e(i)}</li>" for i in itens) + "</ul>"
+
+
+def card(caso, principal):
+    destaque = caso["destaque"]
+    corpo = f"""<span class="rotulo">{e(caso["categoria"])}</span>
+<h3><a href="cases/{e(caso["slug"])}.html">{e(caso["titulo"])}</a></h3>
+<p class="contexto">{e(caso["contexto"])}</p>
+<p class="resumo">{e(caso["resumo"])}</p>"""
+    bloco_destaque = f"""<div class="destaque"><span class="valor">{e(destaque["valor"])}</span><span class="legenda">{e(destaque["legenda"])}</span></div>"""
+    rodape_card = f"""{chips(caso["tecnologias"][:5])}<span class="ver" aria-hidden="true">Ver case {ICONE_SETA}</span>"""
+    if principal:
+        return (f'<article class="card principal"><div class="corpo">{corpo}</div>{bloco_destaque}'
+                f'<div class="fim">{rodape_card}</div></article>')
+    return f"""<article class="card">{corpo}{bloco_destaque}{rodape_card}</article>"""
+
+
+def pagina_inicial(perfil, cases):
+    c = perfil["contato"]
+    nome = perfil["nome"].split()
+    primeiro, resto = " ".join(nome[:2]), " ".join(nome[2:])
+    metricas = "".join(f'<li><span class="valor">{e(m["valor"])}</span><span class="legenda">{e(m["legenda"])}</span></li>' for m in perfil["metricas"])
+    sobre = "".join(f"<p>{e(p)}</p>" for p in perfil["sobre"])
+    cards = "".join(card(caso, i == 0) for i, caso in enumerate(cases))
+    tempo = "".join(f"""<li><span class="periodo">{e(x["periodo"])}</span><div class="item"><h3>{e(x["empresa"])}</h3>
+<span class="cargo">{e(x["cargo"])}</span><span class="ctx">{e(x["contexto"])}</span><p>{e(x["resumo"])}</p></div></li>""" for x in perfil["experiencias"])
+    grupos = "".join(f'<div class="grupo"><h3>{e(g["grupo"])}</h3>{chips(g["itens"])}</div>' for g in perfil["habilidades"])
+    formacao = ""
+    for f in perfil["formacao"]:
+        inst = ", ".join(x for x in (f["instituicao"], f["ano"]) if x)
+        formacao += (f'<li><h3>{e(f["titulo"])}</h3>' + (f'<span class="inst">{e(inst)}</span>' if inst else "")
+                     + (f'<span class="det">{e(f["detalhe"])}</span>' if f["detalhe"] else "") + "</li>")
+    pessoa = {
+        "@context": "https://schema.org", "@type": "Person", "name": perfil["nome"], "jobTitle": perfil["titulo"],
+        "url": perfil["url_site"], "email": "mailto:" + c["email"], "image": perfil["url_site"] + "assets/foto-440.jpg",
+        "address": {"@type": "PostalAddress", "addressLocality": c["cidade"].split(",")[0], "addressRegion": "BA", "addressCountry": "BR"},
+        "alumniOf": "Universidade Estadual de Santa Cruz", "sameAs": [c["linkedin"], c["github"]],
+    }
+    titulo = f'{perfil["nome"]} · {perfil["titulo"]}'
+    return (cabecalho(perfil, titulo, perfil["descricao_seo"], perfil["url_site"], "") + topo(perfil, "") + f"""
+<main id="conteudo">
+<section class="hero"><div class="wrap">
+<div class="hero-texto">
+<span class="rotulo">{e(perfil["titulo"])}</span>
+<h1>{e(primeiro)} <span class="sobrenome">{e(resto)}</span></h1>
+<p class="proposta">{e(perfil["proposta"])}</p>
+<div class="acoes">
+<a class="botao primario" href="#cases">Ver cases {ICONE_SETA}</a>
+<a class="botao secundario" href="{e(perfil["curriculo_pdf"])}" download>{ICONE_BAIXAR} Baixar currículo (PDF)</a>
+</div>
+</div>
+<picture class="hero-foto">
+<source type="image/webp" srcset="assets/foto-220.webp 220w, assets/foto-440.webp 440w" sizes="(max-width: 760px) 200px, 352px">
+<img src="assets/foto-440.jpg" width="440" height="641" alt="Foto de {e(perfil["nome"])}, de camisa preta e braços cruzados, sorrindo, em fundo azul-marinho" fetchpriority="high">
+</picture>
+</div></section>
+
+<section class="metricas" aria-label="Resultados em números"><div class="wrap"><ul>{metricas}</ul></div></section>
+
+<section class="secao" id="sobre"><div class="wrap">
+<div class="cabeca"><span class="rotulo">Sobre</span><div><h2>Dado para decidir, processo para repetir</h2></div></div>
+<div class="cabeca"><span></span><div class="sobre-texto">{sobre}</div></div>
+</div></section>
+
+<section class="secao" id="cases"><div class="wrap">
+<div class="cabeca"><span class="rotulo">{len(cases)} cases</span><div><h2>Projetos</h2><p class="intro">Cada case mostra o problema, o que eu fiz, as ferramentas e o resultado. Documentos de clientes não são publicados.</p></div></div>
+<div class="cases">{cards}</div>
+</div></section>
+
+<section class="secao" id="experiencia"><div class="wrap">
+<div class="cabeca"><span class="rotulo">Trajetória</span><div><h2>Experiência</h2></div></div>
+<ol class="tempo">{tempo}</ol>
+</div></section>
+
+<section class="secao" id="habilidades"><div class="wrap">
+<div class="cabeca"><span class="rotulo">Ferramentas</span><div><h2>Habilidades</h2></div></div>
+<div class="grupos">{grupos}</div>
+</div></section>
+
+<section class="secao" id="formacao"><div class="wrap">
+<div class="cabeca"><span class="rotulo">Estudo</span><div><h2>Formação e certificações</h2></div></div>
+<ul class="formacao">{formacao}</ul>
+</div></section>
+
+<section class="secao contato" id="contato"><div class="wrap">
+<div class="cabeca"><span class="rotulo">Contato</span><div><h2>Vamos conversar</h2><p class="intro">Aberto a oportunidades em análise de dados, automação e BI.</p></div></div>
+<div class="email-linha"><a class="email" href="mailto:{e(c["email"])}">{e(c["email"])}</a><button class="copiar" type="button" data-copiar="{e(c["email"])}">Copiar e-mail</button></div>
+<ul class="canais">
+<li><span class="k">Telefone e WhatsApp</span><a href="https://wa.me/{e(c["whatsapp"])}" target="_blank" rel="noopener">{e(c["telefone"])}</a></li>
+<li><span class="k">LinkedIn</span><a href="{e(c["linkedin"])}" target="_blank" rel="noopener">{e(c["linkedin"].split("linkedin.com/")[-1].strip("/"))}</a></li>
+<li><span class="k">GitHub</span><a href="{e(c["github"])}" target="_blank" rel="noopener">{e(c["github"].split("github.com/")[-1])}</a></li>
+<li><span class="k">Cidade</span><span class="v">{e(c["cidade"])}</span></li>
+</ul>
+<a class="botao primario" href="{e(perfil["curriculo_pdf"])}" download>{ICONE_BAIXAR} Baixar currículo (PDF)</a>
+</div></section>
+</main>
+<script type="application/ld+json">{json.dumps(pessoa, ensure_ascii=False)}</script>
+""" + rodape(perfil, ""))
+
+
+def pagina_case(perfil, cases, i):
+    caso = cases[i]
+    url = f'{perfil["url_site"]}cases/{caso["slug"]}.html'
+    titulo = f'{caso["titulo"]} · {perfil["nome"]}'
+    ant = cases[i - 1] if i > 0 else None
+    prox = cases[i + 1] if i + 1 < len(cases) else None
+    nav = ""
+    if ant:
+        nav += f'<a href="{e(ant["slug"])}.html"><span class="k">← Case anterior</span><span class="t">{e(ant["titulo"])}</span></a>'
+    if prox:
+        nav += f'<a class="prox" href="{e(prox["slug"])}.html"><span class="k">Próximo case →</span><span class="t">{e(prox["titulo"])}</span></a>'
+    lista = lambda itens, cls="": f'<ul class="lista {cls}">' + "".join(f"<li>{e(x)}</li>" for x in itens) + "</ul>"
+    evid = '<div class="nota">' + "".join(f"<p>{e(x)}</p>" for x in caso["evidencias"]) + "</div>"
+    d = caso["destaque"]
+    return (cabecalho(perfil, titulo, caso["resumo"], url, "../") + topo(perfil, "../") + f"""
+<main id="conteudo">
+<section class="case-hero"><div class="wrap">
+<a class="voltar" href="../#cases">← Todos os cases</a>
+<span class="rotulo">{e(caso["categoria"])}</span>
+<h1>{e(caso["titulo"])}</h1>
+<p class="contexto">{e(caso["contexto"])}</p>
+<div class="case-destaque"><span class="valor">{e(d["valor"])}</span><span class="legenda">{e(d["legenda"])}</span></div>
+</div></section>
+<section class="case-corpo secao"><div class="wrap">
+<div class="case-bloco"><h2>Problema</h2><div><p>{e(caso["problema"])}</p></div></div>
+<div class="case-bloco"><h2>O que eu fiz</h2><div>{lista(caso["solucao"])}</div></div>
+<div class="case-bloco"><h2>Resultado</h2><div>{lista(caso["resultados"], "resultados")}</div></div>
+<div class="case-bloco"><h2>Tecnologias</h2><div>{chips(caso["tecnologias"])}</div></div>
+<div class="case-bloco"><h2>Evidências</h2><div>{evid}</div></div>
+</div></section>
+<div class="wrap"><nav class="navcases" aria-label="Outros cases">{nav}</nav></div>
+</main>
+""" + rodape(perfil, "../"))
+
+
+def main():
+    perfil, cases = carregar()
+    (RAIZ / "index.html").write_text(pagina_inicial(perfil, cases), encoding="utf-8")
+    (RAIZ / "cases").mkdir(exist_ok=True)
+    for i, caso in enumerate(cases):
+        (RAIZ / "cases" / f'{caso["slug"]}.html').write_text(pagina_case(perfil, cases, i), encoding="utf-8")
+    hoje = date.today().isoformat()
+    urls = [perfil["url_site"]] + [f'{perfil["url_site"]}cases/{c["slug"]}.html' for c in cases]
+    sitemap = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+               + "".join(f"  <url><loc>{e(u)}</loc><lastmod>{hoje}</lastmod></url>\n" for u in urls) + "</urlset>\n")
+    (RAIZ / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+    (RAIZ / "robots.txt").write_text(f'User-agent: *\nAllow: /\nSitemap: {perfil["url_site"]}sitemap.xml\n', encoding="utf-8")
+    print(f"Site gerado: index.html + {len(cases)} cases, sitemap.xml e robots.txt")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cezarep.github.io/sitemap.xml

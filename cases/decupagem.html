@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistema de decupagem de vídeos com transcrição local · Cézar Santos Gonçalves</title>
+<meta name="description" content="Gravações brutas viram PDFs padronizados, com os trechos classificados por potencial de uso.">
+<link rel="canonical" href="https://cezarep.github.io/cases/decupagem.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Sistema de decupagem de vídeos com transcrição local · Cézar Santos Gonçalves">
+<meta property="og:description" content="Gravações brutas viram PDFs padronizados, com os trechos classificados por potencial de uso.">
+<meta property="og:url" content="https://cezarep.github.io/cases/decupagem.html">
+<meta property="og:image" content="https://cezarep.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1F2A48">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/estilo.css">
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="wrap">
+<a class="marca" href="../">Cézar <span>Gonçalves</span></a>
+<nav class="menu" aria-label="Principal"><a href="../#cases">Cases</a><a href="../#experiencia">Experiência</a><a href="../#contato">Contato</a><button class="tema" type="button" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button></nav>
+</div></header>
+
+<main id="conteudo">
+<section class="case-hero"><div class="wrap">
+<a class="voltar" href="../#cases">← Todos os cases</a>
+<span class="rotulo">IA aplicada</span>
+<h1>Sistema de decupagem de vídeos com transcrição local</h1>
+<p class="contexto">Campanha política · 2026</p>
+<div class="case-destaque"><span class="valor">17 vídeos</span><span class="legenda">processados em um único lote, sem intervenção manual</span></div>
+</div></section>
+<section class="case-corpo secao"><div class="wrap">
+<div class="case-bloco"><h2>Problema</h2><div><p>A equipe recebia horas de vídeo por semana e precisava assistir a tudo para achar trechos para cortes, reels, cards e respostas. O processo era lento, sem padrão, e o conteúdo não podia ser consultado por assunto.</p></div></div>
+<div class="case-bloco"><h2>O que eu fiz</h2><div><ul class="lista "><li>Transcrição local com faster-whisper (modelo small, CPU), ajustada para velocidade com beam_size=1, vad_filter e condition_on_previous_text=False.</li><li>Processamento em lote com glob, que evita problemas de acentuação nos nomes de arquivo no Windows, funciona em servidor de rede (NAS) e pula o que já foi transcrito.</li><li>Cortes de trechos longos com ffmpeg e correção dos timestamps para o tempo do vídeo original.</li><li>Revisão de nomes próprios e segmentação em blocos com timestamp, duração e sugestão de uso, classificados em alto potencial, exige cuidado e evitar.</li><li>Geração dos PDFs com Node.js (docx) e LibreOffice, em padrão visual fixo, com verificação final de cada arquivo.</li></ul></div></div>
+<div class="case-bloco"><h2>Resultado</h2><div><ul class="lista resultados"><li>Dezenas de vídeos de formatos diferentes decupados no mesmo padrão.</li><li>A equipe passou a localizar trechos por assunto e potencial de uso, sem assistir ao vídeo inteiro.</li><li>O processo ficou repetível: novo vídeo, transcrição e PDF pronto.</li><li>Alertas de consentimento dentro do próprio documento quando o material envolvia menores de idade ou pessoas que não autorizaram a gravação.</li></ul></div></div>
+<div class="case-bloco"><h2>Tecnologias</h2><div><ul class="chips"><li>Python</li><li>faster-whisper</li><li>ffmpeg</li><li>PowerShell</li><li>Node.js (docx)</li><li>LibreOffice</li></ul></div></div>
+<div class="case-bloco"><h2>Evidências</h2><div><div class="nota"><p>Documento técnico do sistema, com as etapas, os parâmetros e o padrão dos PDFs.</p><p>As transcrições e decupagens não são publicadas porque contêm material de campanha.</p></div></div></div>
+</div></section>
+<div class="wrap"><nav class="navcases" aria-label="Outros cases"><a href="escuta-comentarios.html"><span class="k">← Case anterior</span><span class="t">Coleta automática e painel de moderação de comentários</span></a><a class="prox" href="operacao-digital.html"><span class="k">Próximo case →</span><span class="t">Operação digital de campanha transformada em sistema medido</span></a></nav></div>
+</main>
+<footer class="rodape"><div class="wrap">
+<span>© 2026 Cézar Santos Gonçalves</span>
+<span>Itabuna, BA</span>
+</div></footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

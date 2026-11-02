@@ -1,0 +1,27 @@
+{
+  "slug": "decupagem",
+  "titulo": "Sistema de decupagem de vídeos com transcrição local",
+  "categoria": "IA aplicada",
+  "contexto": "Campanha política · 2026",
+  "resumo": "Gravações brutas viram PDFs padronizados, com os trechos classificados por potencial de uso.",
+  "destaque": { "valor": "17 vídeos", "legenda": "processados em um único lote, sem intervenção manual" },
+  "problema": "A equipe recebia horas de vídeo por semana e precisava assistir a tudo para achar trechos para cortes, reels, cards e respostas. O processo era lento, sem padrão, e o conteúdo não podia ser consultado por assunto.",
+  "solucao": [
+    "Transcrição local com faster-whisper (modelo small, CPU), ajustada para velocidade com beam_size=1, vad_filter e condition_on_previous_text=False.",
+    "Processamento em lote com glob, que evita problemas de acentuação nos nomes de arquivo no Windows, funciona em servidor de rede (NAS) e pula o que já foi transcrito.",
+    "Cortes de trechos longos com ffmpeg e correção dos timestamps para o tempo do vídeo original.",
+    "Revisão de nomes próprios e segmentação em blocos com timestamp, duração e sugestão de uso, classificados em alto potencial, exige cuidado e evitar.",
+    "Geração dos PDFs com Node.js (docx) e LibreOffice, em padrão visual fixo, com verificação final de cada arquivo."
+  ],
+  "resultados": [
+    "Dezenas de vídeos de formatos diferentes decupados no mesmo padrão.",
+    "A equipe passou a localizar trechos por assunto e potencial de uso, sem assistir ao vídeo inteiro.",
+    "O processo ficou repetível: novo vídeo, transcrição e PDF pronto.",
+    "Alertas de consentimento dentro do próprio documento quando o material envolvia menores de idade ou pessoas que não autorizaram a gravação."
+  ],
+  "tecnologias": ["Python", "faster-whisper", "ffmpeg", "PowerShell", "Node.js (docx)", "LibreOffice"],
+  "evidencias": [
+    "Documento técnico do sistema, com as etapas, os parâmetros e o padrão dos PDFs.",
+    "As transcrições e decupagens não são publicadas porque contêm material de campanha."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "url_site": "https://cezarep.github.io/",
+  "nome": "Cézar Santos Gonçalves",
+  "titulo": "Analista de dados e automação",
+  "proposta": "Transformo operações que funcionam no improviso em sistemas medidos: coleta automática, painéis e decisões apoiadas em dado.",
+  "descricao_seo": "Portfólio de Cézar Santos Gonçalves, engenheiro de produção que trabalha com dados, automação em Python, Power BI e análise de mídia paga.",
+  "metricas": [
+    { "valor": "45 min → 40 s", "legenda": "ciclo de publicação do painel de moderação" },
+    { "valor": "85×", "legenda": "diferença de eficiência exposta por uma métrica criada para a operação" },
+    { "valor": "R$ 15,71 → R$ 4,72", "legenda": "custo por mil pessoas alcançadas" },
+    { "valor": "43%", "legenda": "das impressões fora da área eleitoral, identificadas e corrigidas" }
+  ],
+  "sobre": [
+    "Sou engenheiro de produção formado pela UESC e trabalho com dados, automação e processos.",
+    "Atuei na indústria de celulose, no setor público, em agência de viagens e em campanhas eleitorais, sempre onde a operação precisava decidir rápido.",
+    "Programo em Python e Node.js, construo painéis em Power BI e aplicativos em Power Apps, e uso Lean Six Sigma para medir antes de mudar."
+  ],
+  "experiencias": [
+    {
+      "empresa": "Agência Luz",
+      "cargo": "Estrategista de Mídia Paga, Inteligência e Performance Digital",
+      "periodo": "mai 2026 – out 2026",
+      "contexto": "Campanha a deputado federal (BA)",
+      "resumo": "Auditoria da operação de Meta Ads em 26 municípios, matriz de desempenho por tema e território, métrica de custo marginal por pessoa alcançada e relatórios de inteligência territorial."
+    },
+    {
+      "empresa": "Campanha ao Governo de Rondônia",
+      "cargo": "Gestor de Processos e Inteligência de Dados",
+      "periodo": "ago 2026 – out 2026",
+      "contexto": "Campanha majoritária",
+      "resumo": "Estruturação da operação digital de uma equipe de 30 pessoas, coleta automática de comentários via Graph API, painel de moderação, inventário de anúncios e auditoria do site."
+    },
+    {
+      "empresa": "Produtora Sangue Novo",
+      "cargo": "Gestor de Mídia Paga e Inteligência de Performance",
+      "periodo": "jun 2026 – out 2026",
+      "contexto": "Campanha a deputado estadual (BA)",
+      "resumo": "Operação integral de Meta Ads em oito municípios, benchmark interno com médias móveis, teste comparativo de objetivos e conformidade com as regras do TSE e da LGPD."
+    },
+    {
+      "empresa": "KIP Viagens",
+      "cargo": "Analista de Emissões e Gestão de Milhas",
+      "periodo": "mar 2025 – jun 2026",
+      "contexto": "Agência de viagens",
+      "resumo": "Emissão de passagens e atendimento comercial. Desenvolvi em Python um robô de Telegram para ofertas e propostas, uma automação de rastreio de no-show e um painel de vendas em Power BI."
+    },
+    {
+      "empresa": "Veracel Celulose",
+      "cargo": "Estagiário de Controle Técnico de Qualidade",
+      "periodo": "mai 2022 – dez 2023",
+      "contexto": "Indústria de celulose",
+      "resumo": "Indicadores de qualidade e produtividade, digitalização da inspeção 5S em Power Apps, painéis em Power BI e aplicação para controle de qualidade de fardos no porto."
+    },
+    {
+      "empresa": "Núcleo de Tecnologia Educacional (NTE 05)",
+      "cargo": "Técnico Administrativo",
+      "periodo": "ago 2021 – abr 2022",
+      "contexto": "Setor público",
+      "resumo": "Gestão de dados educacionais de 26 municípios e 61 escolas, com painéis em Power BI, aplicativos em Power Apps e automações em Power Automate."
+    },
+    {
+      "empresa": "Peixaria Frutos do Mar",
+      "cargo": "Gerente",
+      "periodo": "mar 2019 – jan 2021",
+      "contexto": "Comércio e produção",
+      "resumo": "Reestruturação de processos, padronização para reduzir desperdício e retrabalho, estudo técnico e econômico de nova linha de produção e gestão do fluxo de caixa."
+    }
+  ],
+  "habilidades": [
+    { "grupo": "Dados e automação", "itens": ["Python", "SQL", "Node.js", "APIs REST", "Meta Graph API", "Telethon", "Excel avançado"] },
+    { "grupo": "BI e low-code", "itens": ["Power BI", "Power Apps", "Power Automate", "SharePoint"] },
+    { "grupo": "Mídia paga e web analytics", "itens": ["Meta Ads", "Google Analytics 4", "Análise de performance", "ManyChat"] },
+    { "grupo": "IA e documentos", "itens": ["faster-whisper", "ffmpeg", "Node.js (docx)", "LibreOffice", "Geração de PDF"] },
+    { "grupo": "Métodos e conformidade", "itens": ["Lean Six Sigma", "5S", "Gestão por indicadores", "LGPD", "Conformidade eleitoral"] }
+  ],
+  "formacao": [
+    { "titulo": "Bacharelado em Engenharia de Produção", "instituicao": "Universidade Estadual de Santa Cruz (UESC)", "ano": "2025", "detalhe": "TCC: Power Apps como ferramenta de apoio na gestão do 5S em um laboratório de uma fábrica de celulose." },
+    { "titulo": "Lean Six Sigma White Belt e Yellow Belt", "instituicao": "", "ano": "", "detalhe": "" }
+  ],
+  "contato": {
+    "email": "csgoncalves1020@gmail.com",
+    "telefone": "(73) 98145-4794",
+    "whatsapp": "5573981454794",
+    "linkedin": "https://www.linkedin.com/in/cezarsgoncalves/",
+    "github": "https://github.com/CezarEP",
+    "cidade": "Itabuna, BA"
+  },
+  "curriculo_pdf": "assets/curriculo-cezar-santos-goncalves.pdf"
+}
