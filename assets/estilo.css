@@ -76,7 +76,7 @@ p, ul, ol { margin: 0; }
 .proposta { max-width: 30rem; color: var(--muted); font-size: 1.04rem; }
 .acoes { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
 .hero-foto { position: relative; margin: 0; align-self: end; justify-self: end; width: min(100%, 25rem); }
-.hero-foto img { width: 100%; filter: grayscale(1) contrast(1.06); border-radius: 22px 22px 0 0;
+.hero-foto img { width: 100%; border-radius: 22px 22px 0 0;
   -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 70%, transparent 100%); }
 .selo { position: absolute; left: -3.2rem; bottom: 22%; width: 7.4rem; height: 7.4rem; border-radius: 50%; background: var(--pill-bg); color: var(--pill-fg); display: grid; place-items: center; text-align: center; text-decoration: none; font-weight: 800; font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1.25; transition: transform .2s; box-shadow: 0 0 0 6px var(--card); }
 .selo:hover { transform: rotate(-8deg) scale(1.04); background: var(--accent); color: #F4F1EA; }
