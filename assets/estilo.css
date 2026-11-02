@@ -72,7 +72,7 @@ p, ul, ol { margin: 0; }
 .nome { font-size: clamp(2.5rem, 7vw, 5.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -.02em; line-height: .9; font-variation-settings: "wdth" 100; }
 .nome > span { display: block; white-space: nowrap; }
 .brilho { display: inline-block; color: var(--accent); font-size: .45em; vertical-align: .9em; margin-left: .1em; }
-.cargo { font-family: var(--display); font-size: clamp(1.4rem, 3.2vw, 2.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; line-height: 1; font-variation-settings: "wdth" 108; }
+.cargo { font-family: var(--display); font-size: clamp(1.3rem, 2.6vw, 2.1rem); font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; line-height: 1; font-variation-settings: "wdth" 108; }
 .proposta { max-width: 30rem; color: var(--muted); font-size: 1.04rem; }
 .acoes { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
 .hero-foto { position: relative; margin: 0; align-self: end; justify-self: end; width: min(100%, 25rem); }
