@@ -103,7 +103,6 @@ def card(caso, principal):
 def pagina_inicial(perfil, cases):
     c = perfil["contato"]
     nome = perfil["nome"].split()
-    m0 = perfil["metricas"][0]
     metricas = "".join(
         f'<li><span class="valor">{e(m["valor"])}</span>'
         + (f'<span class="titulo">{e(m["titulo"])}</span>' if m.get("titulo") else "")
@@ -142,7 +141,6 @@ def pagina_inicial(perfil, cases):
 <source type="image/webp" srcset="assets/foto-220.webp 220w, assets/foto-440.webp 440w" sizes="(max-width: 820px) 272px, 400px">
 <img src="assets/foto-440.jpg" width="440" height="641" alt="Foto de {e(perfil["nome"])}, de camisa preta e braços cruzados, sorrindo" fetchpriority="high">
 </picture>
-<div class="stat"><b>{e(m0["valor"])}</b><span>{e(m0.get("titulo", m0["legenda"]))}</span></div>
 </figure>
 </div>
 </div>
