@@ -1,0 +1,36 @@
+{
+  "slug": "midia-paga",
+  "titulo": "Mídia paga orientada a dado em duas campanhas na Bahia",
+  "categoria": "Análise de performance",
+  "contexto": "Agência Luz e Produtora Sangue Novo · campanhas a deputado federal e estadual (BA) · mai–out 2026",
+  "resumo": "Leitura diária das contas de Meta Ads para achar onde a verba rendia mais por pessoa alcançada e realocar o orçamento com base no dado.",
+  "destaque": { "valor": "69%", "legenda": "menos custo por mil pessoas alcançadas na campanha regional Sul da Bahia do que na média da conta" },
+  "periodo": "Maio a outubro de 2026",
+  "papel": "Estrategista de mídia paga: análise das contas, desenho das campanhas e recomendação de verba",
+  "status": "Campanhas encerradas com a eleição",
+  "problema": "As duas contas de Meta Ads distribuíam verba e criativos de forma parecida entre municípios com custos muito diferentes. Não havia como saber qual campanha rendia mais por real investido nem se o orçamento chegava ao eleitorado certo.",
+  "solucao": [
+    "Criei a leitura de custo marginal por pessoa nova alcançada, calculada a partir do crescimento diário de alcance.",
+    "Montei uma matriz de desempenho por tema e território, normalizada pelo custo base de cada praça, para comparar municípios com CPM diferente.",
+    "Desenhei a campanha regional Sul da Bahia, de alcance, para levar a mensagem a mais pessoas com menos verba.",
+    "Analisei a distribuição geográfica da entrega e reconfigurei a segmentação quando a entrega saía da área eleitoral.",
+    "Acompanhei CPM, CTR, frequência, alcance e custo por resultado contra médias móveis de 3 e 7 dias, para separar variação normal de deterioração real.",
+    "Detectei projeções de esgotamento de verba antes do prazo legal e recalibrei o teto diário com reserva técnica."
+  ],
+  "resultados": [
+    "Deputado federal (01/08 a 01/10/2026): a campanha regional Sul da Bahia alcançou 349.566 pessoas com R$ 2.358,19, ou 9,8% da verba da conta no período.",
+    "Isso deu R$ 6,75 por mil pessoas alcançadas, contra R$ 21,59 da média da conta: 69% menos.",
+    "Deputado estadual (01/06 a 31/10/2026): R$ 15.852,58 investidos, 4,1 milhões de impressões e 96,5% delas dentro da Bahia.",
+    "A base de contatos da mensageria passou de 1.554 registros brutos para 1.081 números válidos, 456 deles recuperados por normalização."
+  ],
+  "medicao": "Custo por mil pessoas alcançadas = valor gasto ÷ alcance × 1.000, tirado da exportação do Gerenciador de Anúncios para o período inteiro de cada conta. A comparação é da campanha regional com a média da conta inteira, que inclui a própria campanha; não é um antes e depois. Alcances de campanhas diferentes não foram somados, porque a mesma pessoa pode ter sido alcançada por mais de uma.",
+  "limitacoes": [
+    "A exportação separa a entrega só por estado; a análise por município exigiria uma exportação com região mais detalhada.",
+    "Custo por alcance mede eficiência de entrega, não voto nem mudança de opinião."
+  ],
+  "tecnologias": ["Meta Ads", "Excel avançado", "Séries diárias", "Médias móveis", "Normalização de custo", "ManyChat", "LGPD"],
+  "evidencias": [
+    "Exportações do Gerenciador de Anúncios da Meta das duas contas, com valor gasto, alcance e impressões por campanha, estado e dia.",
+    "Os números deste case podem ser refeitos com essas exportações. Os relatórios entregues aos clientes não são publicados."
+  ]
+}

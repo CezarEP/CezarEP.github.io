@@ -7,17 +7,44 @@
   "disponibilidade": "Disponível para trabalho 100% remoto",
   "descricao_seo": "Portfólio de Cézar Santos Gonçalves, analista de dados e automação: Python, SQL, Power BI, Power Apps e melhoria de processos. Disponível para trabalho remoto.",
   "metricas": [
-    { "area": "Dados", "valor": "27.148", "titulo": "comentários coletados em 279 publicações", "legenda": "Instagram e Facebook pela API da Meta, de 13/08 a 12/09/2026, reunidos num painel único para a equipe de moderação" },
-    { "area": "Power Platform", "valor": "5S", "titulo": "inspeção digitalizada na Veracel", "legenda": "aplicativo em Power Apps, dados no SharePoint e painel em Power BI; os cinco responsáveis consultados perceberam mais agilidade" },
-    { "area": "Automação", "valor": "Python", "titulo": "ferramenta comercial da KIP Viagens", "legenda": "aplicação web em Flask com SQLite e robô no Telegram: lê as ofertas de milhas e responde conforme regras de preço configuráveis" },
-    { "area": "Performance", "valor": "69%", "titulo": "menos custo por mil pessoas alcançadas", "legenda": "campanha regional Sul da Bahia: R$ 6,75 contra R$ 21,59 da média da conta, de 01/08 a 01/10/2026 (exportação do Meta Ads)" }
+    {
+      "area": "Dados",
+      "valor": "27.148",
+      "titulo": "comentários coletados em 279 publicações",
+      "legenda": "Instagram e Facebook pela API da Meta, de 13/08 a 12/09/2026, reunidos num painel único para a equipe de moderação"
+    },
+    {
+      "area": "Power Platform",
+      "valor": "5S",
+      "titulo": "inspeção digitalizada na Veracel",
+      "legenda": "aplicativo em Power Apps, dados no SharePoint e painel em Power BI; os cinco responsáveis consultados perceberam mais agilidade"
+    },
+    {
+      "area": "Automação",
+      "valor": "Python",
+      "titulo": "ferramenta comercial da KIP Viagens",
+      "legenda": "aplicação web em Flask com SQLite e robô no Telegram: lê as ofertas de milhas e responde conforme regras de preço configuráveis"
+    },
+    {
+      "area": "Performance",
+      "valor": "69%",
+      "titulo": "menos custo por mil pessoas alcançadas",
+      "legenda": "campanha regional Sul da Bahia: R$ 6,75 contra R$ 21,59 da média da conta, de 01/08 a 01/10/2026 (exportação do Meta Ads)"
+    }
   ],
   "sobre": [
     "Sou engenheiro de produção formado pela UESC e trabalho com dados, automação e processos.",
     "Atuei na indústria de celulose, no setor público, em agência de viagens e em campanhas eleitorais, sempre onde a operação precisava decidir rápido.",
     "Programo em Python e Node.js, construo painéis em Power BI e aplicativos em Power Apps, e uso Lean Six Sigma para medir antes de mudar."
   ],
-  "empresas": ["Agência Luz", "Produtora Sangue Novo", "Campanha Governo de RO", "KIP Viagens", "Veracel Celulose", "NTE 05"],
+  "empresas": [
+    "Agência Luz",
+    "Produtora Sangue Novo",
+    "Campanha Governo de RO",
+    "KIP Viagens",
+    "Veracel Celulose",
+    "NTE 05"
+  ],
   "experiencias": [
     {
       "empresa": "Agência Luz",
@@ -70,15 +97,62 @@
     }
   ],
   "habilidades": [
-    { "grupo": "Dados e automação", "itens": ["Python", "SQL", "Node.js", "APIs REST", "Meta Graph API", "Telethon", "Excel avançado"] },
-    { "grupo": "BI e low-code", "itens": ["Power BI", "Power Apps", "Power Automate", "SharePoint"] },
-    { "grupo": "Mídia paga e web analytics", "itens": ["Meta Ads", "Google Analytics 4", "Análise de performance", "ManyChat"] },
-    { "grupo": "IA e documentos", "itens": ["faster-whisper", "ffmpeg", "Node.js (docx)", "LibreOffice", "Geração de PDF"] },
-    { "grupo": "Métodos e conformidade", "itens": ["Lean Six Sigma", "5S", "Gestão por indicadores", "LGPD", "Conformidade eleitoral"] }
+    {
+      "grupo": "Dados e BI",
+      "itens": [
+        "SQL",
+        "Power BI",
+        "Excel avançado",
+        "Análise de indicadores",
+        "Google Analytics 4",
+        "Meta Ads"
+      ]
+    },
+    {
+      "grupo": "Automação e aplicações",
+      "itens": [
+        "Python",
+        "APIs REST",
+        "Meta Graph API",
+        "Flask",
+        "SQLite",
+        "Power Apps",
+        "Power Automate",
+        "SharePoint"
+      ]
+    },
+    {
+      "grupo": "Pipelines e infraestrutura",
+      "itens": [
+        "PostgreSQL",
+        "Apache Airflow",
+        "Apache Kafka",
+        "Docker"
+      ]
+    },
+    {
+      "grupo": "Métodos",
+      "itens": [
+        "Lean Six Sigma",
+        "5S",
+        "Mapeamento de processos",
+        "LGPD"
+      ]
+    }
   ],
   "formacao": [
-    { "titulo": "Bacharelado em Engenharia de Produção", "instituicao": "Universidade Estadual de Santa Cruz (UESC)", "ano": "2025", "detalhe": "TCC: Power Apps como ferramenta de apoio na gestão do 5S em um laboratório de uma fábrica de celulose." },
-    { "titulo": "Lean Six Sigma White Belt e Yellow Belt", "instituicao": "", "ano": "", "detalhe": "" }
+    {
+      "titulo": "Bacharelado em Engenharia de Produção",
+      "instituicao": "Universidade Estadual de Santa Cruz (UESC)",
+      "ano": "2025",
+      "detalhe": "TCC: Power Apps como ferramenta de apoio na gestão do 5S em um laboratório de uma fábrica de celulose."
+    },
+    {
+      "titulo": "Lean Six Sigma White Belt e Yellow Belt",
+      "instituicao": "",
+      "ano": "",
+      "detalhe": ""
+    }
   ],
   "contato": {
     "email": "csgoncalves1020@gmail.com",

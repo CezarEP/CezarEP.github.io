@@ -1,0 +1,48 @@
+{
+  "slug": "automacao-kip",
+  "titulo": "Robô de ofertas de milhas com painel web em Flask",
+  "categoria": "Automação e aplicação web",
+  "contexto": "KIP Viagens · compra de milhas aéreas em grupos do Telegram · 2025–2026",
+  "resumo": "Um robô lê as ofertas de milhas nos grupos do Telegram, decide por regras se vale responder e calcula o preço pela tabela configurada num painel web.",
+  "destaque": { "valor": "0–100", "legenda": "pontuação por regras que decide se a mensagem é uma oferta real antes de responder" },
+  "periodo": "Março de 2025 a junho de 2026",
+  "papel": "Desenvolvi o robô e o painel web: leitura das mensagens, regras de pontuação, tabela de preços, estoque e controle do robô",
+  "status": "Usado na operação da KIP Viagens; sem demonstração pública no ar",
+  "problema": "As ofertas de milhas chegam a toda hora em grupos do Telegram, misturadas com anúncios de concorrentes e mensagens institucionais. Responder à mão significava perder as boas ofertas para quem respondia primeiro e calcular o preço de cabeça a cada mensagem.",
+  "solucao": [
+    "Escrevi a leitura das mensagens: identifica a companhia (Latam, Smiles ou Azul), a quantidade de milhas, o número de CPFs, o preço pedido e se há liminar.",
+    "Criei uma pontuação de 0 a 100 por regras: soma pontos para intenção de venda, companhia, milhas, CPFs e preço; tira pontos de bloqueios, anúncios e mensagens institucionais.",
+    "Defini três modos de operação (conservador, equilibrado e agressivo), cada um com uma pontuação mínima para responder.",
+    "Calculei o preço pela tabela de cada companhia, por faixa de milhas por CPF, com faixas que podem ser ligadas e desligadas.",
+    "Construí um painel web em Flask com SQLite para gerenciar estoque, tabelas de preço por cliente e grupo, configuração do Telegram, início e parada do robô e registro das decisões."
+  ],
+  "fluxo": [
+    { "etapa": "Mensagem no grupo", "detalhe": "ex.: \"Vendo 80k Smiles, 2 CPFs\"" },
+    { "etapa": "Leitura", "detalhe": "companhia Smiles, 80.000 milhas, 2 CPFs, média de 40.000 milhas por CPF" },
+    { "etapa": "Pontuação", "detalhe": "+30 intenção de venda (\"vendo\"), +20 companhia, +20 milhas, +15 CPF explícito = 85 pontos" },
+    { "etapa": "Decisão", "detalhe": "85 passa da pontuação mínima do modo conservador (80), então o robô segue" },
+    { "etapa": "Preço", "detalhe": "na tabela da Smiles, a faixa de até 49.999 milhas por CPF dá R$ 17,50 o milheiro, e o robô responde com esse valor" }
+  ],
+  "resultados": [
+    "As ofertas passaram a ser respondidas automaticamente, com o preço da tabela, sem cálculo manual a cada mensagem.",
+    "Anúncios de concorrentes e mensagens institucionais deixaram de receber resposta, graças às penalidades da pontuação.",
+    "Cada decisão fica registrada com a pontuação e o motivo (respondeu, baixa confiança, bloqueio, companhia sem preço), o que permite ajustar as regras."
+  ],
+  "decisao": {
+    "titulo": "Regras com pontuação em vez de um modelo de aprendizado de máquina",
+    "texto": "Não havia uma base de mensagens rotuladas para treinar um modelo, e o dono do negócio precisava entender e ajustar por que o robô respondeu ou não. A pontuação por regras é transparente: cada decisão vem com a lista de pontos somados e subtraídos. A pontuação não é uma probabilidade estatística; é um limiar de confiança definido pelo modo de operação."
+  },
+  "codigo": {
+    "trecho": "if tem_intencao:\n    score += 30   # \"vendo\", \"compro\"...\nif tem_cia:\n    score += 20   # Latam, Smiles ou Azul\nif tem_mil:\n    score += 20   # 1.000 milhas ou mais\n\n# penalidades\nif bloqueio := tem_bloqueio(texto, config):\n    score -= 100\nif any(x in t for x in [\"compramos\", \"nossa tabela\", \"pagamos mais\"]):\n    score -= 80   # parece anúncio de concorrente\n\nreturn max(0, min(100, score)), razoes",
+    "legenda": "Parte da função de pontuação do robô. As razões de cada ponto ficam registradas no log. O exemplo acima foi conferido rodando esta função."
+  },
+  "limitacoes": [
+    "As regras dependem de padrões de escrita; ofertas escritas de forma muito diferente podem receber pontuação baixa e ficar sem resposta.",
+    "Os preços e faixas precisam ser atualizados à mão no painel quando o mercado muda."
+  ],
+  "tecnologias": ["Python", "Telethon", "Flask", "SQLite", "Expressões regulares", "Telegram"],
+  "evidencias": [
+    "Código-fonte do robô e do painel web (versão 3).",
+    "Não há prints com dados reais: as telas mostram clientes, preços e contas da empresa. O exemplo deste case usa uma mensagem fictícia."
+  ]
+}

@@ -1,10 +1,13 @@
 {
   "slug": "inspecao-5s",
   "titulo": "Aplicativo de inspeção 5S em Power Apps",
-  "categoria": "Low-code e BI",
+  "categoria": "Power Platform e melhoria de processos",
   "contexto": "Veracel Celulose · laboratório de controle técnico da qualidade · 2023",
-  "resumo": "A inspeção 5S feita à mão e lançada em planilha virou um aplicativo ligado a um painel em Power BI.",
-  "destaque": { "valor": "5 de 5", "legenda": "responsáveis pelo 5S avaliaram o processo novo como mais ágil" },
+  "resumo": "A inspeção 5S feita à mão e lançada em planilha virou um aplicativo em Power Apps, com dados no SharePoint e painel em Power BI.",
+  "destaque": { "valor": "5 de 5", "legenda": "responsáveis pelo 5S consultados perceberam o processo novo como mais ágil" },
+  "periodo": "2023, durante o estágio no controle técnico da qualidade",
+  "papel": "Desenvolvi o aplicativo, a lista no SharePoint e o painel, e conduzi a inspeção piloto e a pesquisa com os usuários",
+  "status": "Inspeção piloto realizada em 31/03/2023 e documentada no TCC",
   "problema": "A inspeção 5S do laboratório era feita à mão e lançada em planilha. Isso abria espaço para erros, retrabalho e uma visão limitada da evolução do programa.",
   "solucao": [
     "Desenvolvi um aplicativo em Power Apps com cadastro de áreas, subáreas e foto padrão de cada ambiente.",
@@ -12,11 +15,17 @@
     "Construí um painel em Power BI com tendência no tempo e comparação entre períodos e áreas.",
     "Fiz uma inspeção piloto em 31/03/2023 e avaliei o resultado com os usuários."
   ],
-  "resultados": [
-    "Os 5 responsáveis pelo 5S avaliaram o processo como mais ágil; 3 deles, muito mais ágil.",
-    "Todos se declararam satisfeitos com a automação e consideraram a interface fácil de usar.",
-    "O lançamento manual em planilha foi eliminado, o que reduziu erros e retrabalho."
+  "fluxo": [
+    { "etapa": "Power Apps", "detalhe": "o auditor escolhe a área, compara com a foto padrão e marca conformidade ou não conformidade, com o motivo" },
+    { "etapa": "SharePoint", "detalhe": "cada resposta vira um registro numa lista, sem digitação em planilha" },
+    { "etapa": "Power BI", "detalhe": "painel com a evolução no tempo e a comparação entre períodos e áreas" }
   ],
+  "resultados": [
+    "Os 5 responsáveis pelo 5S consultados perceberam o processo como mais ágil; 3 deles, muito mais ágil.",
+    "Todos se declararam satisfeitos com a automação e consideraram a interface fácil de usar.",
+    "O lançamento manual em planilha deixou de ser necessário: a resposta registrada no aplicativo já alimenta o painel."
+  ],
+  "medicao": "A agilidade é a percepção dos usuários, colhida em pesquisa depois da inspeção piloto. O tempo de inspeção não foi cronometrado antes e depois.",
   "tecnologias": ["Power Apps", "SharePoint", "Power BI", "5S"],
   "evidencias": [
     "Trabalho de conclusão de curso: \"Estudo de caso: Power Apps como ferramenta de apoio na gestão do 5S em um laboratório de uma fábrica de celulose\" (UESC, 2023).",

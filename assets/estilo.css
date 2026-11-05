@@ -215,7 +215,22 @@ p, ul, ol { margin: 0; }
 .case-bloco { display: contents; }
 .case-bloco > h2 { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; padding-block: 1.9rem; border-top: 1px solid var(--line); }
 .case-bloco > div { padding-block: 1.9rem; border-top: 1px solid var(--line); min-width: 0; max-width: 48rem; }
-.case-bloco:first-child > h2, .case-bloco:first-child > div { border-top: 1px solid var(--ink); }
+.case-bloco:first-of-type > h2, .case-bloco:first-of-type > div { border-top: 1px solid var(--ink); }
+.ficha { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem 2rem; padding-block: 0 2rem; margin: 0; }
+.ficha dt { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ficha dd { margin: .3rem 0 0; font-weight: 600; }
+.fluxo { list-style: none; padding: 0; margin: 0 0 1.4rem; display: flex; flex-direction: column; gap: 0; counter-reset: etapa; }
+.fluxo li { position: relative; display: flex; flex-direction: column; gap: .2rem; padding: .9rem 1.1rem .9rem 3.2rem; background: var(--card); border-radius: 14px; counter-increment: etapa; }
+.fluxo li + li { margin-top: 1.4rem; }
+.fluxo li + li::before { content: "↓"; position: absolute; top: -1.35rem; left: 1.35rem; color: var(--accent); font-weight: 800; }
+.fluxo li::after { content: counter(etapa); position: absolute; left: 1rem; top: .9rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--accent); color: var(--bg); font-size: .8rem; font-weight: 800; display: grid; place-items: center; }
+.fluxo .etapa { font-weight: 800; }
+.fluxo .det { color: var(--muted); font-size: .95rem; }
+.medicao { margin-top: 1rem; font-size: .95rem; color: var(--muted); }
+.case-bloco h3.sub { font-size: 1.05rem; font-weight: 800; margin-bottom: .5rem; }
+.codigo { margin: 0; }
+.codigo pre { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.1rem; font-family: var(--mono); font-size: .82rem; line-height: 1.55; }
+.codigo figcaption { margin-top: .6rem; font-size: .88rem; color: var(--muted); }
 .lista { padding-left: 1.2rem; display: flex; flex-direction: column; gap: .75rem; }
 .lista.resultados { list-style: none; padding-left: 0; }
 .lista.resultados li { position: relative; padding-left: 1.7rem; font-weight: 600; }

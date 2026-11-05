@@ -1,30 +1,44 @@
 {
   "slug": "campanha-rondonia",
   "titulo": "Inteligência de dados e processos na campanha ao Governo de Rondônia",
-  "categoria": "Campanha majoritária · operação completa",
+  "categoria": "Dados e automação · operação completa",
   "contexto": "Campanha ao Governo de Rondônia · equipe de 30 pessoas em 5 núcleos · ago–out 2026",
-  "resumo": "Da escuta do público à decupagem dos concorrentes: dados e processos para a campanha decidir mais rápido e produzir com mais segurança.",
-  "destaque": { "valor": "73%", "legenda": "mais rápido para reunir os comentários de todos os posts num só painel: a atualização caiu de 45 para 12 minutos" },
+  "resumo": "Coleta de 27.148 comentários pela API da Meta, painel único para a moderação e decupagem automática de vídeos para a campanha decidir mais rápido.",
+  "destaque": { "valor": "45 → 12 min", "legenda": "tempo de atualização do painel que reúne os comentários de todos os posts, da primeira versão à versão em uso" },
+  "periodo": "Agosto a outubro de 2026",
+  "papel": "Gestor de processos e inteligência de dados: desenhei e programei a coleta, o painel e a decupagem",
+  "status": "Usado na operação da campanha; encerrado com o fim da eleição",
   "problema": "A operação digital produzia muito, mas sem processos, sem indicadores e sem uma visão do que o público dizia. Os comentários ficavam espalhados em cada post, as gravações da campanha e dos concorrentes precisavam ser assistidas inteiras, e ninguém sabia ao certo o que estava em anúncio.",
   "solucao": [
     "Escuta do público: coleta automática dos comentários do Instagram e do Facebook pela API da Meta, reunidos num painel único com fila de prioridade e filtro de pendências. A equipe de moderação passou a responder tudo de um lugar só.",
-    "Leitura dos comentários para orientar o conteúdo: quais temas geravam crítica, onde estava o atrito e como o público reagia a cada material, como medida do nível de satisfação.",
+    "Leitura dos comentários para orientar o conteúdo: separação das respostas da própria conta, classificação de crítica por palavras-chave e temas que mais geravam atrito.",
     "Decupagem dos vídeos da campanha e dos concorrentes (debates, sabatinas, entrevistas): transcrição automática e trechos classificados por potencial de uso, para acelerar decisões estratégicas e a produção de cortes para as redes.",
     "Correção do indicador de atendimento: cruzamento das respostas registradas pela API com as visíveis na rede.",
     "Inventário automatizado dos anúncios ativos, auditoria do site com Google Analytics 4, checagem factual das peças e conformidade com as regras de uso de IA.",
     "Mapeamento de processos e indicadores para os 5 núcleos, com documentação entregue na transição da equipe."
   ],
+  "fluxo": [
+    { "etapa": "Coleta pela API da Meta", "detalhe": "script em Python busca as publicações do Instagram e do Facebook e os comentários de cada uma" },
+    { "etapa": "Tratamento", "detalhe": "separa as respostas da própria conta, remove duplicados e marca o que ainda está sem resposta" },
+    { "etapa": "Painel único", "detalhe": "fila de prioridade e filtro de pendências para a equipe de moderação responder tudo de um lugar só" },
+    { "etapa": "Leitura analítica", "detalhe": "relatório com temas de crítica, publicações com mais atrito e evolução diária, separado da interface de atendimento" }
+  ],
   "resultados": [
-    "Comentários de todos os posts num só painel, com a atualização caindo de 45 para 12 minutos.",
+    "27.148 comentários coletados em 279 publicações (139 no Instagram e 140 no Facebook), de 13/08 a 12/09/2026; 19.018 deles eram do público e o restante, respostas da própria conta.",
+    "O tempo de atualização do painel caiu de 45 minutos, na primeira versão, para 12 minutos, na versão em uso quando a equipe saiu.",
     "Decisões estratégicas e cortes para as redes produzidos sem assistir a horas de gravação, inclusive dos concorrentes.",
     "31% das respostas não eram contabilizadas por saírem de outro perfil; o indicador de atendimento foi corrigido.",
     "536 anúncios em 160 peças passaram a ser rastreáveis pela equipe.",
-    "52 páginas do site auditadas, com relatório de inconsistências entregue para correção.",
-    "Peças com dados sem comprovação deixaram de ser publicadas."
+    "52 páginas do site auditadas, com relatório de inconsistências entregue para correção."
+  ],
+  "medicao": "O tempo de atualização é a duração de um ciclo completo: buscar pela API os comentários de todas as publicações e publicar o resultado no painel. Volume coletado não é, sozinho, prova de impacto: o ganho está em a equipe responder de um lugar só e com o painel atualizado em 12 minutos.",
+  "limitacoes": [
+    "A classificação de crítica é feita por palavras-chave, não por um modelo estatístico; serve para triagem, não como medida exata de sentimento.",
+    "O Facebook não informa o autor de parte dos comentários pela API, o que limita a análise de perfis recorrentes nessa rede."
   ],
   "tecnologias": ["Python", "Meta Graph API", "faster-whisper", "ffmpeg", "Node.js", "Google Analytics 4", "Mapeamento de processos"],
   "evidencias": [
     "Relatório interno de leitura dos comentários, documento técnico do sistema de decupagem e documentação operacional entregue à campanha.",
-    "Os documentos não são publicados: são internos da campanha e contêm perfis e comentários de terceiros."
+    "Os documentos completos não são publicados: são internos da campanha e contêm perfis e comentários de terceiros."
   ]
 }

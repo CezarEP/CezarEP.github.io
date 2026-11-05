@@ -213,6 +213,27 @@ def pagina_case(perfil, cases, i):
     lista = lambda itens, cls="": f'<ul class="lista {cls}">' + "".join(f"<li>{e(x)}</li>" for x in itens) + "</ul>"
     evid = '<div class="nota">' + "".join(f"<p>{e(x)}</p>" for x in caso["evidencias"]) + "</div>"
     d = caso["destaque"]
+    bloco = lambda titulo, html: f'<div class="case-bloco"><h2>{titulo}</h2><div>{html}</div></div>'
+    ficha = "".join(f'<div><dt>{rot}</dt><dd>{e(caso[k])}</dd></div>'
+                    for k, rot in (("periodo", "Período"), ("papel", "Meu papel"), ("status", "Status")) if caso.get(k))
+    ficha = f'<dl class="ficha">{ficha}</dl>' if ficha else ""
+    como = ""
+    if caso.get("fluxo"):
+        como += '<ol class="fluxo">' + "".join(
+            f'<li><span class="etapa">{e(f["etapa"])}</span><span class="det">{e(f["detalhe"])}</span></li>' for f in caso["fluxo"]) + "</ol>"
+    if caso.get("como_funciona"):
+        como += lista(caso["como_funciona"])
+    resultado = lista(caso["resultados"], "resultados")
+    if caso.get("medicao"):
+        resultado += f'<p class="medicao"><strong>Como foi medido:</strong> {e(caso["medicao"])}</p>'
+    tecnico = ""
+    if caso.get("decisao"):
+        tecnico += bloco("Decisão técnica", f'<h3 class="sub">{e(caso["decisao"]["titulo"])}</h3><p>{e(caso["decisao"]["texto"])}</p>')
+    if caso.get("codigo"):
+        cod = caso["codigo"]
+        tecnico += bloco("Trecho do código", f'<figure class="codigo"><pre><code>{e(cod["trecho"])}</code></pre><figcaption>{e(cod["legenda"])}</figcaption></figure>')
+    if caso.get("limitacoes"):
+        tecnico += bloco("Limitações", lista(caso["limitacoes"]))
     return (cabecalho(perfil, titulo, caso["resumo"], url, "../") + f"""
 <header class="topo"><div class="wrap"><div class="cartao">
 {nav(perfil, "../")}
@@ -226,9 +247,12 @@ def pagina_case(perfil, cases, i):
 </div></div></header>
 <main>
 <section class="case-corpo secao"><div class="wrap">
+{ficha}
 <div class="case-bloco"><h2>Problema</h2><div><p>{e(caso["problema"])}</p></div></div>
 <div class="case-bloco"><h2>O que eu fiz</h2><div>{lista(caso["solucao"])}</div></div>
-<div class="case-bloco"><h2>Resultado</h2><div>{lista(caso["resultados"], "resultados")}</div></div>
+{bloco("Como funciona", como) if como else ""}
+<div class="case-bloco"><h2>Resultado</h2><div>{resultado}</div></div>
+{tecnico}
 <div class="case-bloco"><h2>Tecnologias</h2><div>{chips(caso["tecnologias"])}</div></div>
 <div class="case-bloco"><h2>Evidências</h2><div>{evid}</div></div>
 </div></section>

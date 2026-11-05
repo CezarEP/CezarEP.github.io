@@ -1,0 +1,51 @@
+{
+  "slug": "monitor-noticias",
+  "titulo": "Monitor de notícias políticas com Airflow, Kafka e PostgreSQL",
+  "categoria": "Pipeline de dados",
+  "contexto": "Campanha ao Governo de Rondônia · 83 fontes de notícia do estado · 2026",
+  "resumo": "Pipeline que coleta de hora em hora as matérias dos portais de Rondônia, classifica sentimento, tema e município, grava no PostgreSQL e avisa a equipe quando surge notícia negativa.",
+  "destaque": { "valor": "1 h", "legenda": "intervalo de cada ciclo de coleta, classificação e gravação, orquestrado pelo Airflow" },
+  "periodo": "Campanha de 2026",
+  "papel": "Projetei e programei o pipeline inteiro: coleta, filas, classificação, banco, alertas e painel",
+  "status": "Rodou durante a campanha; a hospedagem foi encerrada. Sem demonstração no ar: este case mostra a arquitetura e o código",
+  "problema": "A campanha precisava saber rápido o que a imprensa de Rondônia publicava sobre o candidato, os adversários e os temas da eleição. Acompanhar dezenas de portais à mão era lento, e matérias negativas podiam passar horas sem ninguém ver.",
+  "solucao": [
+    "Mapeei 83 fontes de notícia do estado (76 portais e 7 páginas de redes sociais) e transformei o mapa num arquivo de configuração.",
+    "Escrevi a coleta por RSS dos portais e pela API do GNews, com filtro que só deixa passar matérias que citam o candidato, um adversário ou um tema da campanha.",
+    "Separei coleta e processamento com Kafka: um producer publica as matérias num tópico e um consumer as enriquece e grava.",
+    "Classifiquei cada matéria por sentimento, tema e município, com um modelo de linguagem quando há chave de API e um classificador por palavras-chave como alternativa.",
+    "Gravei tudo no PostgreSQL sem duplicar, disparei alertas no Slack ou no Telegram para matérias negativas novas e montei um painel em Streamlit.",
+    "Orquestrei as etapas no Airflow, de hora em hora, e empacotei o ambiente em Docker Compose."
+  ],
+  "fluxo": [
+    { "etapa": "Fontes", "detalhe": "RSS de 76 portais de Rondônia e API do GNews, com filtro por candidato, adversários e temas" },
+    { "etapa": "Airflow", "detalhe": "DAG de hora em hora com duas tarefas: coletar e publicar, depois enriquecer e gravar" },
+    { "etapa": "Kafka", "detalhe": "tópico noticias_politica separa a coleta do processamento" },
+    { "etapa": "Enriquecimento", "detalhe": "sentimento, quem é citado, tema e município, por modelo de linguagem ou por palavras-chave" },
+    { "etapa": "PostgreSQL", "detalhe": "tabela de matérias com chave pelo hash de link e título, para não gravar a mesma matéria duas vezes" },
+    { "etapa": "Alertas e painel", "detalhe": "aviso no Slack ou no Telegram para matéria negativa nova; painel Streamlit com sentimento, temas, fontes e links" }
+  ],
+  "resultados": [
+    "A equipe passou a receber as matérias dos portais do estado num só lugar, atualizadas de hora em hora, em vez de procurar portal por portal.",
+    "Matérias negativas sobre o candidato geravam alerta assim que eram gravadas, sem depender de alguém estar olhando o painel.",
+    "Cada matéria ficou registrada com fonte, município, tema e sentimento, o que permitiu ver quais temas e regiões concentravam cobertura negativa."
+  ],
+  "decisao": {
+    "titulo": "Por que Kafka entre a coleta e a gravação",
+    "texto": "A coleta depende de dezenas de portais que caem, mudam de endereço ou respondem devagar, e a classificação por modelo de linguagem leva tempo por matéria. Com o Kafka no meio, a coleta só publica no tópico e termina; o consumer processa no ritmo dele. Se a classificação falha, as matérias continuam no tópico e são processadas na próxima execução, sem refazer a coleta."
+  },
+  "codigo": {
+    "trecho": "with DAG(\n    dag_id=\"monitor_politico_ro\",\n    schedule_interval=\"0 * * * *\",   # de hora em hora\n    catchup=False,\n) as dag:\n    coletar = PythonOperator(task_id=\"coletar_e_publicar\", python_callable=run_producer)\n    processar = PythonOperator(task_id=\"enriquecer_e_gravar\", python_callable=run_consumer)\n\n    coletar >> processar",
+    "legenda": "DAG do Airflow: a coleta publica no Kafka e só depois o consumer enriquece e grava no PostgreSQL."
+  },
+  "limitacoes": [
+    "O classificador por palavras-chave, usado quando não há chave de API, é grosseiro: conta palavras positivas e negativas e não entende ironia nem contexto.",
+    "Nem todo portal tem RSS; os que não têm ficam de fora, e as páginas de Instagram e Facebook precisariam de coleta própria pela API oficial.",
+    "Por direito autoral, o banco guarda só título, resumo curto e link, não o texto integral das matérias."
+  ],
+  "tecnologias": ["Python", "Apache Airflow", "Apache Kafka", "PostgreSQL", "Docker Compose", "Streamlit", "RSS", "GNews API", "OpenAI API"],
+  "evidencias": [
+    "Código-fonte do pipeline: DAG do Airflow, producer e consumer do Kafka, esquema do banco, classificação, alertas e painel.",
+    "Como a hospedagem foi encerrada, não há painel no ar nem dados da campanha publicados; o código pode ser executado localmente com Docker Compose."
+  ]
+}
