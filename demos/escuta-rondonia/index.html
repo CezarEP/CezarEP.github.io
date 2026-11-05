@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escuta Rondônia | Demonstração de portfólio</title>
+  <style>
+    :root { color-scheme: light; --ink:#172b27; --muted:#4b605a; --paper:#f4f5ee; --line:#c9d6cc; --accent:#175c48; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:1rem/1.55 system-ui,sans-serif; }
+    a { color:var(--accent); }
+    header { background:#173e34; color:white; padding:2.5rem 0; }
+    header a { color:#d7f5e6; }
+    .wrap { width:min(100% - 2rem, 68rem); margin:auto; }
+    h1,h2,h3,p { margin:0 0 .7rem; }
+    h1 { font-size:clamp(2rem,6vw,3.6rem); line-height:1.05; }
+    h2 { font-size:clamp(1.35rem,4vw,1.8rem); }
+    .eyebrow { font-size:.85rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; }
+    nav { display:flex; flex-wrap:wrap; gap:.9rem; margin-top:1rem; }
+    main { padding:1.25rem 0 2rem; }
+    section { margin:1rem 0; padding:clamp(1rem,3vw,1.6rem); border:1px solid var(--line); border-radius:1rem; background:white; }
+    .note { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr)); gap:.75rem; }
+    .card { background:#eef4ee; padding:.9rem; border-radius:.65rem; }
+    .number { display:block; font-size:1.65rem; font-weight:750; }
+    .filters { display:flex; flex-wrap:wrap; gap:.75rem; margin:1rem 0; }
+    label { display:grid; gap:.3rem; font-weight:650; min-width:0; }
+    select,input { max-width:100%; padding:.5rem; font:inherit; color:inherit; border:1px solid #71877e; border-radius:.35rem; background:white; }
+    .bars { display:grid; gap:.35rem; margin-top:.9rem; }
+    .bar { display:grid; grid-template-columns:3.3rem 1fr 3.1rem; gap:.5rem; align-items:center; font-variant-numeric:tabular-nums; }
+    .track { background:#e6efe9; border-radius:.25rem; overflow:hidden; height:.85rem; }
+    .fill { display:block; height:100%; background:var(--accent); }
+    .value { text-align:right; }
+    article { padding:.75rem 0; border-top:1px solid var(--line); }
+    article p { margin:0; }
+    footer { padding:0 0 1.5rem; color:var(--muted); }
+    :focus-visible { outline:3px solid #29775e; outline-offset:3px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">Cézar Santos Gonçalves · Portfólio</p>
+      <h1>Escuta Rondônia</h1>
+      <p>Demonstração do relatório interativo de análise de comentários.</p>
+      <nav aria-label="Navegação da demonstração">
+        <a href="#visao-geral">Visão geral</a>
+        <a href="#volume">Volume diário</a>
+        <a href="#exemplos">Explorar exemplos</a>
+        <a href="/cases/campanha-rondonia.html">Voltar ao case</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section id="visao-geral" aria-labelledby="titulo-visao">
+      <h2 id="titulo-visao">Comentários de 279 publicações</h2>
+      <p class="note">Indicadores históricos agregados de 13/08 a 12/09/2026. A seção de exemplos usa mensagens fictícias. Os dados são de um recorte histórico.</p>
+      <div class="grid">
+        <div class="card"><span class="number">27.148</span>Comentários coletados</div>
+        <div class="card"><span class="number">8.130</span>Respostas da conta oficial</div>
+        <div class="card"><span class="number">19.018</span>Manifestações do público</div>
+      </div>
+    </section>
+    <section id="volume" aria-labelledby="titulo-volume">
+      <h2 id="titulo-volume">Volume diário</h2>
+      <p class="note">Escolha um intervalo para explorar as manifestações do público nas duas plataformas.</p>
+      <div class="filters">
+        <label>De <select id="inicio"></select></label>
+        <label>Até <select id="fim"></select></label>
+      </div>
+      <p id="resumo-volume" role="status"></p>
+      <details open>
+        <summary>Ver distribuição por dia</summary>
+        <div id="barras" class="bars"></div>
+      </details>
+    </section>
+    <section aria-labelledby="titulo-plataformas">
+      <h2 id="titulo-plataformas">Comparação por plataforma</h2>
+      <div class="grid">
+        <div class="card"><h3>Instagram</h3><p>139 publicações · 8.838 manifestações</p><p>31 manifestações sinalizadas como críticas</p></div>
+        <div class="card"><h3>Facebook</h3><p>140 publicações · 10.180 manifestações</p><p>948 manifestações sinalizadas como críticas</p></div>
+      </div>
+      <p style="margin-top:.9rem">O Facebook concentrou cerca de 97% das 979 manifestações sinalizadas como críticas. A recomendação foi priorizar a revisão da fila nessa plataforma.</p>
+      <p class="note">A classificação por palavras-chave serve para triagem e pode perder ironia ou contexto. Os números descrevem os comentários coletados.</p>
+    </section>
+    <section id="exemplos" aria-labelledby="titulo-exemplos">
+      <h2 id="titulo-exemplos">Explorar exemplos fictícios</h2>
+      <p class="note">As mensagens abaixo foram escritas para demonstrar a navegação. Elas são independentes dos indicadores históricos.</p>
+      <div class="filters">
+        <label>Plataforma <select id="plataforma"><option value="">Todas</option><option>Instagram</option><option>Facebook</option></select></label>
+        <label>Tema <select id="tema"><option value="">Todos</option><option>Energia</option><option>Transporte</option><option>Serviços públicos</option></select></label>
+        <label>Buscar <input id="busca" type="search" placeholder="Ex.: atendimento"></label>
+      </div>
+      <p id="resumo-exemplos" role="status"></p>
+      <div id="mensagens"></div>
+    </section>
+  </main>
+  <footer class="wrap">Coleta histórica pela Meta Graph API. Demonstração de portfólio com indicadores agregados.</footer>
+  <script>
+    const serie = [{"d":"13/08","n":306},{"d":"14/08","n":528},{"d":"15/08","n":266},{"d":"16/08","n":821},{"d":"17/08","n":739},{"d":"18/08","n":920},{"d":"19/08","n":982},{"d":"20/08","n":697},{"d":"21/08","n":562},{"d":"22/08","n":761},{"d":"23/08","n":616},{"d":"24/08","n":331},{"d":"25/08","n":378},{"d":"26/08","n":295},{"d":"27/08","n":256},{"d":"28/08","n":372},{"d":"29/08","n":420},{"d":"30/08","n":292},{"d":"31/08","n":247},{"d":"01/09","n":1010},{"d":"02/09","n":3892},{"d":"03/09","n":760},{"d":"04/09","n":383},{"d":"05/09","n":370},{"d":"06/09","n":346},{"d":"07/09","n":574},{"d":"08/09","n":341},{"d":"09/09","n":370},{"d":"10/09","n":510},{"d":"11/09","n":610},{"d":"12/09","n":63}];
+    const exemplos = [
+      { plataforma: 'Facebook', tema: 'Energia', texto: 'Onde encontro informações sobre a previsão de manutenção da rede?' },
+      { plataforma: 'Facebook', tema: 'Transporte', texto: 'Seria útil divulgar os horários atualizados das linhas da região.' },
+      { plataforma: 'Instagram', tema: 'Serviços públicos', texto: 'Qual é o canal de atendimento para esclarecer essa dúvida?' },
+      { plataforma: 'Facebook', tema: 'Serviços públicos', texto: 'Gostaria de saber como acompanhar os pedidos já registrados.' },
+      { plataforma: 'Instagram', tema: 'Transporte', texto: 'Podem publicar um mapa com os pontos de embarque?' },
+      { plataforma: 'Instagram', tema: 'Energia', texto: 'Uma explicação sobre as etapas da manutenção ajudaria.' }
+    ];
+    const formato = new Intl.NumberFormat('pt-BR');
+    const inicio = document.getElementById('inicio');
+    const fim = document.getElementById('fim');
+    const barras = document.getElementById('barras');
+    const resumoVolume = document.getElementById('resumo-volume');
+    for (const [indice, dia] of serie.entries()) {
+      inicio.add(new Option(dia.d, indice));
+      fim.add(new Option(dia.d, indice));
+    }
+    fim.selectedIndex = serie.length - 1;
+    const maximo = Math.max(1, ...serie.map(dia => dia.n));
+
+    function atualizarVolume() {
+      const dias = serie.slice(inicio.selectedIndex, fim.selectedIndex + 1);
+      const total = dias.reduce((soma, dia) => soma + dia.n, 0);
+      resumoVolume.textContent = `${formato.format(total)} manifestações em ${dias.length} dia(s) no intervalo.`;
+      barras.replaceChildren();
+      for (const dia of dias) {
+        const linha = document.createElement('div');
+        linha.className = 'bar';
+        const data = document.createElement('span');
+        data.textContent = dia.d;
+        const trilho = document.createElement('span');
+        trilho.className = 'track';
+        trilho.setAttribute('aria-hidden', 'true');
+        const barra = document.createElement('span');
+        barra.className = 'fill';
+        barra.style.width = `${100 * dia.n / maximo}%`;
+        trilho.append(barra);
+        const valor = document.createElement('span');
+        valor.className = 'value';
+        valor.textContent = formato.format(dia.n);
+        linha.append(data, trilho, valor);
+        barras.append(linha);
+      }
+    }
+    inicio.addEventListener('change', () => {
+      if (inicio.selectedIndex > fim.selectedIndex) fim.selectedIndex = inicio.selectedIndex;
+      atualizarVolume();
+    });
+    fim.addEventListener('change', () => {
+      if (fim.selectedIndex < inicio.selectedIndex) inicio.selectedIndex = fim.selectedIndex;
+      atualizarVolume();
+    });
+    atualizarVolume();
+
+    const plataforma = document.getElementById('plataforma');
+    const tema = document.getElementById('tema');
+    const busca = document.getElementById('busca');
+    const mensagens = document.getElementById('mensagens');
+    const resumoExemplos = document.getElementById('resumo-exemplos');
+    const normalizar = texto => texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+    function atualizarExemplos() {
+      const consulta = normalizar(busca.value.trim());
+      const resultados = exemplos.filter(exemplo =>
+        (!plataforma.value || exemplo.plataforma === plataforma.value) &&
+        (!tema.value || exemplo.tema === tema.value) && normalizar(exemplo.texto).includes(consulta)
+      );
+      mensagens.replaceChildren();
+      resumoExemplos.textContent = resultados.length ? `${resultados.length} exemplo(s) fictício(s).` : 'Nenhum exemplo para esses filtros.';
+      for (const exemplo of resultados) {
+        const item = document.createElement('article');
+        const rotulo = document.createElement('h3');
+        rotulo.textContent = `${exemplo.plataforma} · ${exemplo.tema}`;
+        const texto = document.createElement('p');
+        texto.textContent = exemplo.texto;
+        item.append(rotulo, texto);
+        mensagens.append(item);
+      }
+    }
+    plataforma.addEventListener('change', atualizarExemplos);
+    tema.addEventListener('change', atualizarExemplos);
+    busca.addEventListener('input', atualizarExemplos);
+    atualizarExemplos();
+  </script>
+</body>
+</html>
+
