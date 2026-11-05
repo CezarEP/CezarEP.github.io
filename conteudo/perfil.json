@@ -1,14 +1,16 @@
 {
   "url_site": "https://cezarep.github.io/",
   "nome": "Cézar Santos Gonçalves",
-  "titulo": "Analista de dados e desenvolvedor de automações",
-  "proposta": "Transformo operações que funcionam no improviso em sistemas medidos: coleta automática, painéis e decisões apoiadas em dado.",
-  "descricao_seo": "Portfólio de Cézar Santos Gonçalves, engenheiro de produção que trabalha com dados, automação em Python, Power BI e análise de mídia paga.",
+  "titulo": "Analista de Dados e Automação",
+  "complemento": "Python, SQL e Power Platform aplicados à melhoria de processos.",
+  "proposta": "Desenvolvo automações, aplicativos e painéis para reduzir atividades manuais, organizar informações e apoiar decisões.",
+  "disponibilidade": "Disponível para trabalho 100% remoto",
+  "descricao_seo": "Portfólio de Cézar Santos Gonçalves, analista de dados e automação: Python, SQL, Power BI, Power Apps e melhoria de processos. Disponível para trabalho remoto.",
   "metricas": [
-    { "valor": "70%", "titulo": "menos custo por alcance", "legenda": "alcançar mil pessoas passou de R$ 15,71 para R$ 4,72" },
-    { "valor": "43%", "titulo": "dos anúncios eram vistos por quem não votava", "legenda": "impressões fora da área eleitoral; corrigi a segmentação e a verba voltou para o eleitorado" },
-    { "valor": "73%", "titulo": "mais rápido para ouvir o público", "legenda": "comentários de todos os posts num só painel, de 45 para 12 minutos" },
-    { "valor": "85×", "titulo": "diferença entre anúncios", "legenda": "uma métrica que criei mostrou onde a verba rendia mais, e ela foi realocada" }
+    { "area": "Dados", "valor": "27.148", "titulo": "comentários coletados em 279 publicações", "legenda": "Instagram e Facebook pela API da Meta, de 13/08 a 12/09/2026, reunidos num painel único para a equipe de moderação" },
+    { "area": "Power Platform", "valor": "5S", "titulo": "inspeção digitalizada na Veracel", "legenda": "aplicativo em Power Apps, dados no SharePoint e painel em Power BI; os cinco responsáveis consultados perceberam mais agilidade" },
+    { "area": "Automação", "valor": "Python", "titulo": "ferramenta comercial da KIP Viagens", "legenda": "aplicação web em Flask com SQLite e robô no Telegram: lê as ofertas de milhas e responde conforme regras de preço configuráveis" },
+    { "area": "Performance", "valor": "69%", "titulo": "menos custo por mil pessoas alcançadas", "legenda": "campanha regional Sul da Bahia: R$ 6,75 contra R$ 21,59 da média da conta, de 01/08 a 01/10/2026 (exportação do Meta Ads)" }
   ],
   "sobre": [
     "Sou engenheiro de produção formado pela UESC e trabalho com dados, automação e processos.",

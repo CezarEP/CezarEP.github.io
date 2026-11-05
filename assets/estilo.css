@@ -73,7 +73,9 @@ p, ul, ol { margin: 0; }
 .nome > span { display: block; white-space: nowrap; }
 .brilho { display: inline-block; color: var(--accent); font-size: .45em; vertical-align: .9em; margin-left: .1em; }
 .cargo { font-family: var(--display); font-size: clamp(1.3rem, 2.6vw, 2.1rem); font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; line-height: 1; font-variation-settings: "wdth" 108; }
+.complemento { font-weight: 600; font-size: 1.04rem; max-width: 30rem; }
 .proposta { max-width: 30rem; color: var(--muted); font-size: 1.04rem; }
+.local { font-size: .9rem; color: var(--muted); font-family: var(--mono, monospace); }
 .acoes { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
 .hero-foto { position: relative; margin: 0; align-self: end; justify-self: end; width: min(100%, 25rem); }
 .hero-foto img { width: 100%; border-radius: 22px 22px 0 0;
@@ -102,6 +104,7 @@ p, ul, ol { margin: 0; }
 .metricas li { padding: 1.4rem 1.4rem 1.6rem 0; display: flex; flex-direction: column; gap: .45rem; min-width: 0; }
 .metricas li + li { padding-left: 1.4rem; border-left: 1px solid var(--line); }
 .metricas .valor { font-family: var(--display); font-weight: 900; font-size: clamp(2.4rem, 4.6vw, 3.8rem); line-height: .95; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.metricas .area { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
 .metricas .titulo { font-weight: 700; font-size: 1rem; line-height: 1.25; text-transform: uppercase; letter-spacing: .01em; }
 .metricas .legenda { font-size: .9rem; color: var(--muted); line-height: 1.4; }
 @media (max-width: 900px) {

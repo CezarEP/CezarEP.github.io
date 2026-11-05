@@ -104,7 +104,8 @@ def pagina_inicial(perfil, cases):
     c = perfil["contato"]
     nome = perfil["nome"].split()
     metricas = "".join(
-        f'<li><span class="valor">{e(m["valor"])}</span>'
+        '<li>' + (f'<span class="area">{e(m["area"])}</span>' if m.get("area") else "")
+        + f'<span class="valor">{e(m["valor"])}</span>'
         + (f'<span class="titulo">{e(m["titulo"])}</span>' if m.get("titulo") else "")
         + f'<span class="legenda">{e(m["legenda"])}</span></li>' for m in perfil["metricas"])
     sobre = "".join(f"<p>{e(p)}</p>" for p in perfil["sobre"])
@@ -133,8 +134,10 @@ def pagina_inicial(perfil, cases):
 <span class="rotulo">Dados · automação · processos</span>
 <h1 class="nome"><span>{e(nome[0])}<span class="brilho" aria-hidden="true">✦</span></span><span>{e(nome[-1])}</span></h1>
 <p class="cargo">{e(perfil["titulo"])}</p>
+<p class="complemento">{e(perfil["complemento"])}</p>
 <p class="proposta">{e(perfil["proposta"])}</p>
-<div class="acoes"><a class="pill" href="#cases">Ver cases {ICONE_DIAG}</a><a class="pill vazada" href="#contato">Contato</a></div>
+<p class="local">{e(c["cidade"])} · {e(perfil["disponibilidade"])}</p>
+<div class="acoes"><a class="pill" href="#cases">Ver projetos {ICONE_DIAG}</a><a class="pill vazada" href="{e(perfil["curriculo_pdf"])}" download>Baixar currículo</a><a class="pill vazada" href="#contato">Contato</a></div>
 </div>
 <figure class="hero-foto">
 <picture>
@@ -148,8 +151,8 @@ def pagina_inicial(perfil, cases):
 </div></header>
 
 <main>
-<section class="secao metricas" aria-label="Resultados em números"><div class="wrap">
-<div class="cabeca"><div><span class="rotulo">Resultados</span><h2>O impacto em números</h2></div></div>
+<section class="secao metricas" aria-label="Entregas em destaque"><div class="wrap">
+<div class="cabeca"><div><span class="rotulo">Entregas em destaque</span><h2>O que já entreguei</h2></div></div>
 <ul>{metricas}</ul>
 </div></section>
 
