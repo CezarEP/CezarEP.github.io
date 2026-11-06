@@ -234,6 +234,19 @@ def pagina_case(perfil, cases, i):
         tecnico += bloco("Trecho do código", f'<figure class="codigo"><pre><code>{e(cod["trecho"])}</code></pre><figcaption>{e(cod["legenda"])}</figcaption></figure>')
     if caso.get("limitacoes"):
         tecnico += bloco("Limitações", lista(caso["limitacoes"]))
+    imagens = ""
+    if caso.get("imagens"):
+        # cada imagem abre em tamanho original numa nova aba, para ampliar no celular
+        imagens = bloco("Imagens", '<div class="galeria">' + "".join(
+            f'<figure><a href="../{e(im["arquivo"])}" target="_blank" rel="noopener" aria-label="Ampliar: {e(im["alt"])}">'
+            f'<img src="../{e(im["arquivo"])}" alt="{e(im["alt"])}" loading="lazy"></a>'
+            f'<figcaption>{e(im["legenda"])}</figcaption></figure>' for im in caso["imagens"])
+            + f'</div><p class="medicao">{e(caso.get("credito_imagens", ""))} Toque na imagem para ampliar.</p>')
+    demo = ""
+    if caso.get("demo"):
+        dm = caso["demo"]
+        demo = (f'<div class="demo"><a class="pill" href="../{e(dm["url"])}">{e(dm["rotulo"])} {ICONE_DIAG}</a>'
+                f'<span>{e(dm["nota"])}</span></div>')
     return (cabecalho(perfil, titulo, caso["resumo"], url, "../") + f"""
 <header class="topo"><div class="wrap"><div class="cartao">
 {nav(perfil, "../")}
@@ -243,6 +256,7 @@ def pagina_case(perfil, cases, i):
 <h1>{e(caso["titulo"])}</h1>
 <p class="contexto">{e(caso["contexto"])}</p>
 <div class="case-destaque"><span class="valor">{e(d["valor"])}</span><span class="legenda">{e(d["legenda"])}</span></div>
+{demo}
 </div>
 </div></div></header>
 <main>
@@ -251,6 +265,7 @@ def pagina_case(perfil, cases, i):
 <div class="case-bloco"><h2>Problema</h2><div><p>{e(caso["problema"])}</p></div></div>
 <div class="case-bloco"><h2>O que eu fiz</h2><div>{lista(caso["solucao"])}</div></div>
 {bloco("Como funciona", como) if como else ""}
+{imagens}
 <div class="case-bloco"><h2>Resultado</h2><div>{resultado}</div></div>
 {tecnico}
 <div class="case-bloco"><h2>Tecnologias</h2><div>{chips(caso["tecnologias"])}</div></div>

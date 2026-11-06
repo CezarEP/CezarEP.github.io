@@ -4,7 +4,15 @@
   "categoria": "Dados e automação · operação completa",
   "contexto": "Campanha ao Governo de Rondônia · equipe de 30 pessoas em 5 núcleos · ago–out 2026",
   "resumo": "Coleta de 27.148 comentários pela API da Meta, painel único para a moderação e decupagem automática de vídeos para a campanha decidir mais rápido.",
-  "destaque": { "valor": "45 → 12 min", "legenda": "tempo de atualização do painel que reúne os comentários de todos os posts, da primeira versão à versão em uso" },
+  "destaque": {
+    "valor": "45 → 12 min",
+    "legenda": "tempo de atualização do painel que reúne os comentários de todos os posts, da primeira versão à versão em uso"
+  },
+  "demo": {
+    "url": "demos/escuta-rondonia/",
+    "rotulo": "Abrir a demonstração",
+    "nota": "Relatório interativo com os números agregados da coleta e mensagens fictícias; nenhum comentário ou perfil real."
+  },
   "periodo": "Agosto a outubro de 2026",
   "papel": "Gestor de processos e inteligência de dados: desenhei e programei a coleta, o painel e a decupagem",
   "status": "Usado na operação da campanha; encerrado com o fim da eleição",
@@ -18,10 +26,22 @@
     "Mapeamento de processos e indicadores para os 5 núcleos, com documentação entregue na transição da equipe."
   ],
   "fluxo": [
-    { "etapa": "Coleta pela API da Meta", "detalhe": "script em Python busca as publicações do Instagram e do Facebook e os comentários de cada uma" },
-    { "etapa": "Tratamento", "detalhe": "separa as respostas da própria conta, remove duplicados e marca o que ainda está sem resposta" },
-    { "etapa": "Painel único", "detalhe": "fila de prioridade e filtro de pendências para a equipe de moderação responder tudo de um lugar só" },
-    { "etapa": "Leitura analítica", "detalhe": "relatório com temas de crítica, publicações com mais atrito e evolução diária, separado da interface de atendimento" }
+    {
+      "etapa": "Coleta pela API da Meta",
+      "detalhe": "script em Python busca as publicações do Instagram e do Facebook e os comentários de cada uma"
+    },
+    {
+      "etapa": "Tratamento",
+      "detalhe": "separa as respostas da própria conta, remove duplicados e marca o que ainda está sem resposta"
+    },
+    {
+      "etapa": "Painel único",
+      "detalhe": "fila de prioridade e filtro de pendências para a equipe de moderação responder tudo de um lugar só"
+    },
+    {
+      "etapa": "Leitura analítica",
+      "detalhe": "relatório com temas de crítica, publicações com mais atrito e evolução diária, separado da interface de atendimento"
+    }
   ],
   "resultados": [
     "27.148 comentários coletados em 279 publicações (139 no Instagram e 140 no Facebook), de 13/08 a 12/09/2026; 19.018 deles eram do público e o restante, respostas da própria conta.",
@@ -36,8 +56,17 @@
     "A classificação de crítica é feita por palavras-chave, não por um modelo estatístico; serve para triagem, não como medida exata de sentimento.",
     "O Facebook não informa o autor de parte dos comentários pela API, o que limita a análise de perfis recorrentes nessa rede."
   ],
-  "tecnologias": ["Python", "Meta Graph API", "faster-whisper", "ffmpeg", "Node.js", "Google Analytics 4", "Mapeamento de processos"],
+  "tecnologias": [
+    "Python",
+    "Meta Graph API",
+    "faster-whisper",
+    "ffmpeg",
+    "Node.js",
+    "Google Analytics 4",
+    "Mapeamento de processos"
+  ],
   "evidencias": [
+    "Demonstração pública do relatório de comentários: indicadores agregados de 13/08 a 12/09/2026, volume diário com filtro de período, comparação entre Instagram e Facebook e exemplos fictícios para mostrar a navegação.",
     "Relatório interno de leitura dos comentários, documento técnico do sistema de decupagem e documentação operacional entregue à campanha.",
     "Os documentos completos não são publicados: são internos da campanha e contêm perfis e comentários de terceiros."
   ]

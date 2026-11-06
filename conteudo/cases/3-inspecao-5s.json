@@ -4,7 +4,10 @@
   "categoria": "Power Platform e melhoria de processos",
   "contexto": "Veracel Celulose · laboratório de controle técnico da qualidade · 2023",
   "resumo": "A inspeção 5S feita à mão e lançada em planilha virou um aplicativo em Power Apps, com dados no SharePoint e painel em Power BI.",
-  "destaque": { "valor": "5 de 5", "legenda": "responsáveis pelo 5S consultados perceberam o processo novo como mais ágil" },
+  "destaque": {
+    "valor": "5 de 5",
+    "legenda": "responsáveis pelo 5S consultados perceberam o processo novo como mais ágil"
+  },
   "periodo": "2023, durante o estágio no controle técnico da qualidade",
   "papel": "Desenvolvi o aplicativo, a lista no SharePoint e o painel, e conduzi a inspeção piloto e a pesquisa com os usuários",
   "status": "Inspeção piloto realizada em 31/03/2023 e documentada no TCC",
@@ -16,17 +19,54 @@
     "Fiz uma inspeção piloto em 31/03/2023 e avaliei o resultado com os usuários."
   ],
   "fluxo": [
-    { "etapa": "Power Apps", "detalhe": "o auditor escolhe a área, compara com a foto padrão e marca conformidade ou não conformidade, com o motivo" },
-    { "etapa": "SharePoint", "detalhe": "cada resposta vira um registro numa lista, sem digitação em planilha" },
-    { "etapa": "Power BI", "detalhe": "painel com a evolução no tempo e a comparação entre períodos e áreas" }
+    {
+      "etapa": "Power Apps",
+      "detalhe": "o auditor escolhe a área, compara com a foto padrão e marca conformidade ou não conformidade, com o motivo"
+    },
+    {
+      "etapa": "SharePoint",
+      "detalhe": "cada resposta vira um registro numa lista, sem digitação em planilha"
+    },
+    {
+      "etapa": "Power BI",
+      "detalhe": "painel com a evolução no tempo e a comparação entre períodos e áreas"
+    }
   ],
+  "imagens": [
+    {
+      "arquivo": "assets/cases/inspecao-5s/antes-planilha.png",
+      "alt": "Planilha com colunas Local, Subitem, Data, Status e Observações, preenchida à mão com as inspeções de fevereiro de 2022",
+      "legenda": "Antes: cada inspeção era anotada no caderno e depois digitada nesta planilha (TCC, Figura 5)."
+    },
+    {
+      "arquivo": "assets/cases/inspecao-5s/app-inspecoes.png",
+      "alt": "Tela do aplicativo com a lista de áreas da sala Online, cada uma com a foto do ambiente e uma seta para abrir a inspeção",
+      "legenda": "Depois: o auditor escolhe a sala e a área a inspecionar; cada área tem sua foto padrão (TCC, Figura 8)."
+    },
+    {
+      "arquivo": "assets/cases/inspecao-5s/app-inspecao-area.png",
+      "alt": "Tela de inspeção da área Online 01 com a foto numerada da bancada e, para cada item, opções Sim ou Não e um campo de observação",
+      "legenda": "Inspeção de uma área: cada item numerado na foto recebe Sim ou Não e uma observação; ao salvar, vai para o SharePoint (TCC, Figura 9)."
+    },
+    {
+      "arquivo": "assets/cases/inspecao-5s/painel-power-bi.png",
+      "alt": "Painel em Power BI chamado Inspeção 5S, com filtro por área e período, desempenho por mês, porcentagem total de desempenho, conformidade por área e evolução",
+      "legenda": "Painel em Power BI: desempenho por mês, conformidade por área e evolução no tempo, alimentado pelo aplicativo (TCC, Figura 20)."
+    }
+  ],
+  "credito_imagens": "Imagens: Gonçalves, C. S., TCC de Engenharia de Produção, UESC, 2023. As marcações coloridas são do próprio trabalho.",
   "resultados": [
     "Os 5 responsáveis pelo 5S consultados perceberam o processo como mais ágil; 3 deles, muito mais ágil.",
     "Todos se declararam satisfeitos com a automação e consideraram a interface fácil de usar.",
     "O lançamento manual em planilha deixou de ser necessário: a resposta registrada no aplicativo já alimenta o painel."
   ],
   "medicao": "A agilidade é a percepção dos usuários, colhida em pesquisa depois da inspeção piloto. O tempo de inspeção não foi cronometrado antes e depois.",
-  "tecnologias": ["Power Apps", "SharePoint", "Power BI", "5S"],
+  "tecnologias": [
+    "Power Apps",
+    "SharePoint",
+    "Power BI",
+    "5S"
+  ],
   "evidencias": [
     "Trabalho de conclusão de curso: \"Estudo de caso: Power Apps como ferramenta de apoio na gestão do 5S em um laboratório de uma fábrica de celulose\" (UESC, 2023).",
     "O trabalho descreve as telas do aplicativo, o painel e a pesquisa com os usuários."
