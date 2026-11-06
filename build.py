@@ -4,6 +4,7 @@ Uso:  python build.py
 Edite conteudo/perfil.json e conteudo/cases/*.json; depois rode este script.
 Gera index.html, cases/<slug>.html, sitemap.xml e robots.txt. Só usa a biblioteca padrão.
 """
+import hashlib
 import json
 from datetime import date
 from html import escape
@@ -11,6 +12,11 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 CONTEUDO = RAIZ / "conteudo"
+
+
+def versao(arquivo):
+    """Hash curto do arquivo, para o navegador não usar uma cópia antiga do CSS ou do JS."""
+    return hashlib.sha1((RAIZ / "assets" / arquivo).read_bytes()).hexdigest()[:8]
 
 FONTES = ("https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,100,400"
           "&family=JetBrains+Mono:wght@400;500&display=swap")
@@ -55,7 +61,7 @@ def cabecalho(perfil, titulo, descricao, url, prefixo):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTES}">
-<link rel="stylesheet" href="{prefixo}assets/estilo.css">
+<link rel="stylesheet" href="{prefixo}assets/estilo.css?v={versao("estilo.css")}">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -76,7 +82,7 @@ def rodape(perfil, prefixo):
 <span>© {date.today().year} {e(perfil["nome"])}</span>
 <span>{e(perfil["contato"]["cidade"])}</span>
 </div></footer>
-<script src="{prefixo}assets/site.js" defer></script>
+<script src="{prefixo}assets/site.js?v={versao("site.js")}" defer></script>
 </body>
 </html>
 """
