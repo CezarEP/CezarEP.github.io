@@ -4,10 +4,18 @@
   "categoria": "Pipeline de dados",
   "contexto": "Campanha ao Governo de Rondônia · 83 fontes de notícia do estado · 2026",
   "resumo": "Pipeline que coleta de hora em hora as matérias dos portais de Rondônia, classifica sentimento, tema e município, grava no PostgreSQL e avisa a equipe quando surge notícia negativa.",
-  "destaque": { "valor": "1 h", "legenda": "intervalo de cada ciclo de coleta, classificação e gravação, orquestrado pelo Airflow" },
+  "destaque": {
+    "valor": "1 h",
+    "legenda": "intervalo de cada ciclo de coleta, classificação e gravação, orquestrado pelo Airflow"
+  },
+  "demo": {
+    "url": "demos/monitor-noticias/",
+    "rotulo": "Abrir a demonstração",
+    "nota": "Coleta real de 06/11/2026: 360 matérias de 38 portais de Rondônia, classificadas pelos scripts do projeto."
+  },
   "periodo": "Campanha de 2026",
   "papel": "Projetei e programei o pipeline inteiro: coleta, filas, classificação, banco, alertas e painel",
-  "status": "Rodou durante a campanha; a hospedagem foi encerrada. Sem demonstração no ar: este case mostra a arquitetura e o código",
+  "status": "Rodou durante a campanha; a hospedagem foi encerrada. A demonstração mostra uma coleta real feita depois, com os mesmos scripts",
   "problema": "A campanha precisava saber rápido o que a imprensa de Rondônia publicava sobre o candidato, os adversários e os temas da eleição. Acompanhar dezenas de portais à mão era lento, e matérias negativas podiam passar horas sem ninguém ver.",
   "solucao": [
     "Mapeei 83 fontes de notícia do estado (76 portais e 7 páginas de redes sociais) e transformei o mapa num arquivo de configuração.",
@@ -18,12 +26,30 @@
     "Orquestrei as etapas no Airflow, de hora em hora, e empacotei o ambiente em Docker Compose."
   ],
   "fluxo": [
-    { "etapa": "Fontes", "detalhe": "RSS de 76 portais de Rondônia e API do GNews, com filtro por candidato, adversários e temas" },
-    { "etapa": "Airflow", "detalhe": "DAG de hora em hora com duas tarefas: coletar e publicar, depois enriquecer e gravar" },
-    { "etapa": "Kafka", "detalhe": "tópico noticias_politica separa a coleta do processamento" },
-    { "etapa": "Enriquecimento", "detalhe": "sentimento, quem é citado, tema e município, por modelo de linguagem ou por palavras-chave" },
-    { "etapa": "PostgreSQL", "detalhe": "tabela de matérias com chave pelo hash de link e título, para não gravar a mesma matéria duas vezes" },
-    { "etapa": "Alertas e painel", "detalhe": "aviso no Slack ou no Telegram para matéria negativa nova; painel Streamlit com sentimento, temas, fontes e links" }
+    {
+      "etapa": "Fontes",
+      "detalhe": "RSS de 76 portais de Rondônia e API do GNews, com filtro por candidato, adversários e temas"
+    },
+    {
+      "etapa": "Airflow",
+      "detalhe": "DAG de hora em hora com duas tarefas: coletar e publicar, depois enriquecer e gravar"
+    },
+    {
+      "etapa": "Kafka",
+      "detalhe": "tópico noticias_politica separa a coleta do processamento"
+    },
+    {
+      "etapa": "Enriquecimento",
+      "detalhe": "sentimento, quem é citado, tema e município, por modelo de linguagem ou por palavras-chave"
+    },
+    {
+      "etapa": "PostgreSQL",
+      "detalhe": "tabela de matérias com chave pelo hash de link e título, para não gravar a mesma matéria duas vezes"
+    },
+    {
+      "etapa": "Alertas e painel",
+      "detalhe": "aviso no Slack ou no Telegram para matéria negativa nova; painel Streamlit com sentimento, temas, fontes e links"
+    }
   ],
   "resultados": [
     "A equipe passou a receber as matérias dos portais do estado num só lugar, atualizadas de hora em hora, em vez de procurar portal por portal.",
@@ -43,9 +69,20 @@
     "Nem todo portal tem RSS; os que não têm ficam de fora, e as páginas de Instagram e Facebook precisariam de coleta própria pela API oficial.",
     "Por direito autoral, o banco guarda só título, resumo curto e link, não o texto integral das matérias."
   ],
-  "tecnologias": ["Python", "Apache Airflow", "Apache Kafka", "PostgreSQL", "Docker Compose", "Streamlit", "RSS", "GNews API", "OpenAI API"],
+  "tecnologias": [
+    "Python",
+    "Apache Airflow",
+    "Apache Kafka",
+    "PostgreSQL",
+    "Docker Compose",
+    "Streamlit",
+    "RSS",
+    "GNews API",
+    "OpenAI API"
+  ],
   "evidencias": [
+    "Demonstração com coleta real em 06/11/2026: os scripts de extração e classificação do projeto leram 519 matérias de 38 portais com RSS e mantiveram 360 relevantes. Essa execução rodou em Python direto, sem Airflow, Kafka e PostgreSQL.",
     "Código-fonte do pipeline: DAG do Airflow, producer e consumer do Kafka, esquema do banco, classificação, alertas e painel.",
-    "Como a hospedagem foi encerrada, não há painel no ar nem dados da campanha publicados; o código pode ser executado localmente com Docker Compose."
+    "Não há dados da campanha publicados; o sistema completo pode ser executado localmente com Docker Compose."
   ]
 }
