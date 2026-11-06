@@ -236,12 +236,20 @@ def pagina_case(perfil, cases, i):
         tecnico += bloco("Limitações", lista(caso["limitacoes"]))
     imagens = ""
     if caso.get("imagens"):
-        # cada imagem abre em tamanho original numa nova aba, para ampliar no celular
-        imagens = bloco("Imagens", '<div class="galeria">' + "".join(
-            f'<figure><a href="../{e(im["arquivo"])}" target="_blank" rel="noopener" aria-label="Ampliar: {e(im["alt"])}">'
-            f'<img src="../{e(im["arquivo"])}" alt="{e(im["alt"])}" loading="lazy"></a>'
-            f'<figcaption>{e(im["legenda"])}</figcaption></figure>' for im in caso["imagens"])
-            + f'</div><p class="medicao">{e(caso.get("credito_imagens", ""))} Toque na imagem para ampliar.</p>')
+        g = caso["imagens"]
+        grupos = ""
+        for grupo in g["grupos"]:
+            # a imagem nunca passa do tamanho original (não fica borrada) e abre inteira numa nova aba
+            figs = "".join(
+                f'<figure class="fig{" larga" if im.get("larga") else ""}" style="--max:{int(im["largura"])}px">'
+                f'<a href="../{e(im["arquivo"])}" target="_blank" rel="noopener" aria-label="Ampliar: {e(im["alt"])}">'
+                f'<img src="../{e(im["arquivo"])}" alt="{e(im["alt"])}" width="{int(im["largura"])}" height="{int(im["altura"])}" loading="lazy"></a>'
+                f'<figcaption><span class="fonte">{e(im["fonte"])}</span>{e(im["legenda"])}</figcaption></figure>'
+                for im in grupo["itens"])
+            grupos += (f'<div class="antes-depois-grupo"><div class="grupo-cab"><span class="etiqueta">{e(grupo["etiqueta"])}</span>'
+                       f'<h3>{e(grupo["titulo"])}</h3><p>{e(grupo["texto"])}</p></div><div class="figs">{figs}</div></div>')
+        imagens = (f'<div class="antes-depois"><div class="ad-cab"><h2>{e(g["titulo"])}</h2><p>{e(g["intro"])}</p></div>'
+                   f'{grupos}<p class="credito">{e(g["credito"])} Toque numa imagem para ver em tamanho original.</p></div>')
     demo = ""
     if caso.get("demo"):
         dm = caso["demo"]

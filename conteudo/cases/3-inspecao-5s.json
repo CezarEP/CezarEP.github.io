@@ -32,29 +32,76 @@
       "detalhe": "painel com a evolução no tempo e a comparação entre períodos e áreas"
     }
   ],
-  "imagens": [
-    {
-      "arquivo": "assets/cases/inspecao-5s/antes-planilha.png",
-      "alt": "Planilha com colunas Local, Subitem, Data, Status e Observações, preenchida à mão com as inspeções de fevereiro de 2022",
-      "legenda": "Antes: cada inspeção era anotada no caderno e depois digitada nesta planilha (TCC, Figura 5)."
-    },
-    {
-      "arquivo": "assets/cases/inspecao-5s/app-inspecoes.png",
-      "alt": "Tela do aplicativo com a lista de áreas da sala Online, cada uma com a foto do ambiente e uma seta para abrir a inspeção",
-      "legenda": "Depois: o auditor escolhe a sala e a área a inspecionar; cada área tem sua foto padrão (TCC, Figura 8)."
-    },
-    {
-      "arquivo": "assets/cases/inspecao-5s/app-inspecao-area.png",
-      "alt": "Tela de inspeção da área Online 01 com a foto numerada da bancada e, para cada item, opções Sim ou Não e um campo de observação",
-      "legenda": "Inspeção de uma área: cada item numerado na foto recebe Sim ou Não e uma observação; ao salvar, vai para o SharePoint (TCC, Figura 9)."
-    },
-    {
-      "arquivo": "assets/cases/inspecao-5s/painel-power-bi.png",
-      "alt": "Painel em Power BI chamado Inspeção 5S, com filtro por área e período, desempenho por mês, porcentagem total de desempenho, conformidade por área e evolução",
-      "legenda": "Painel em Power BI: desempenho por mês, conformidade por área e evolução no tempo, alimentado pelo aplicativo (TCC, Figura 20)."
-    }
-  ],
-  "credito_imagens": "Imagens: Gonçalves, C. S., TCC de Engenharia de Produção, UESC, 2023. As marcações coloridas são do próprio trabalho.",
+  "imagens": {
+    "titulo": "Antes e depois",
+    "intro": "A mesma inspeção em dois momentos: anotada à mão num caderno e redigitada em planilha, e depois feita direto no aplicativo, com os dados chegando sozinhos ao painel.",
+    "credito": "Imagens do TCC de Cézar Santos Gonçalves, Engenharia de Produção, UESC, 2023. As marcações coloridas nas telas são do próprio trabalho e indicam os comandos explicados nele.",
+    "grupos": [
+      {
+        "etiqueta": "Antes",
+        "titulo": "No papel",
+        "texto": "O auditor percorria o laboratório com o caderno, marcava cada item à mão e depois passava tudo para uma planilha.",
+        "itens": [
+          {
+            "arquivo": "assets/cases/inspecao-5s/antes-caderno.jpg",
+            "largura": 1470,
+            "altura": 680,
+            "larga": true,
+            "fonte": "TCC, Figura 4",
+            "alt": "À esquerda, a capa de um caderno espiral escrito Inspeção 5S 2022. À direita, uma página do caderno com a foto de uma bancada do laboratório, três pontos numerados e uma grade com os meses de fevereiro a dezembro para marcar cada ponto e anotar observações",
+            "legenda": "O caderno de inspeção 5S de 2022. Cada página mostrava a foto de uma área com os pontos numerados e uma grade mensal, preenchida à mão, para marcar cada ponto e anotar observações."
+          },
+          {
+            "arquivo": "assets/cases/inspecao-5s/antes-planilha.png",
+            "largura": 545,
+            "altura": 221,
+            "fonte": "TCC, Figura 5",
+            "alt": "Planilha com as colunas Local, Subitem, Data, Status e Observações, com as inspeções de fevereiro de 2022 e uma não conformidade anotada: frasco perda alcalina fora do local",
+            "legenda": "Depois da ronda, o que estava no caderno era digitado nesta planilha, linha por linha. Era nesse retrabalho que surgiam os erros de lançamento."
+          }
+        ]
+      },
+      {
+        "etiqueta": "Depois",
+        "titulo": "No aplicativo",
+        "texto": "A inspeção passou a ser feita no celular ou no tablet, na frente da bancada, e cada resposta já vai para o SharePoint.",
+        "itens": [
+          {
+            "arquivo": "assets/cases/inspecao-5s/app-inspecoes.png",
+            "largura": 600,
+            "altura": 430,
+            "fonte": "TCC, Figura 8",
+            "alt": "Tela do aplicativo chamada Inspeções, com a sala Online selecionada e a lista das áreas Online 01 a Online 06, cada uma com a foto do ambiente",
+            "legenda": "O auditor escolhe a sala e vê todas as áreas a inspecionar, cada uma com a foto padrão de como o ambiente deve estar."
+          },
+          {
+            "arquivo": "assets/cases/inspecao-5s/app-inspecao-area.png",
+            "largura": 599,
+            "altura": 427,
+            "fonte": "TCC, Figura 9",
+            "alt": "Tela de inspeção da área Online 01: a foto da bancada com os pontos 1, 2 e 3 e, ao lado, para cada item, as opções Sim ou Não, um campo de observação e o botão Salvar",
+            "legenda": "Na área, cada ponto numerado na foto recebe Sim ou Não e, se preciso, uma observação. Ao tocar em Salvar, a resposta já fica registrada."
+          }
+        ]
+      },
+      {
+        "etiqueta": "Resultado",
+        "titulo": "O painel",
+        "texto": "Sem digitação intermediária, o painel mostra a situação de cada área e a evolução do programa.",
+        "itens": [
+          {
+            "arquivo": "assets/cases/inspecao-5s/painel-power-bi.png",
+            "largura": 885,
+            "altura": 493,
+            "larga": true,
+            "fonte": "TCC, Figura 20",
+            "alt": "Painel em Power BI chamado Inspeção 5S, com filtro por área e período, gráfico de desempenho por mês, rosca com a porcentagem total de desempenho, barras de conformidade por área e linha de evolução no tempo",
+            "legenda": "Painel em Power BI alimentado pelo aplicativo: desempenho por mês, porcentagem geral de conformidade, conformidade por área e evolução no tempo."
+          }
+        ]
+      }
+    ]
+  },
   "resultados": [
     "Os 5 responsáveis pelo 5S consultados perceberam o processo como mais ágil; 3 deles, muito mais ágil.",
     "Todos se declararam satisfeitos com a automação e consideraram a interface fácil de usar.",
