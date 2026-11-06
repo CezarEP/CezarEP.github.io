@@ -11,25 +11,29 @@
       "area": "Dados",
       "valor": "27.148",
       "titulo": "comentários coletados em 279 publicações",
-      "legenda": "Instagram e Facebook pela API da Meta, de 13/08 a 12/09/2026, reunidos num painel único para a equipe de moderação"
+      "legenda": "Instagram e Facebook pela API da Meta, de 13/08 a 12/09/2026, reunidos num painel único para a equipe de moderação",
+      "case": "campanha-rondonia"
     },
     {
       "area": "Power Platform",
       "valor": "5S",
       "titulo": "inspeção digitalizada na Veracel",
-      "legenda": "aplicativo em Power Apps, dados no SharePoint e painel em Power BI; os cinco responsáveis consultados perceberam mais agilidade"
+      "legenda": "aplicativo em Power Apps, dados no SharePoint e painel em Power BI; os cinco responsáveis consultados perceberam mais agilidade",
+      "case": "inspecao-5s"
     },
     {
       "area": "Automação",
       "valor": "Python",
       "titulo": "ferramenta comercial da KIP Viagens",
-      "legenda": "aplicação web em Flask com SQLite e robô no Telegram: lê as ofertas de milhas e responde conforme regras de preço configuráveis"
+      "legenda": "aplicação web em Flask com SQLite e robô no Telegram: lê as ofertas de milhas e responde conforme regras de preço configuráveis",
+      "case": "automacao-kip"
     },
     {
       "area": "Performance",
       "valor": "69%",
       "titulo": "menos custo por mil pessoas alcançadas",
-      "legenda": "campanha regional Sul da Bahia: R$ 6,75 contra R$ 21,59 da média da conta, de 01/08 a 01/10/2026 (exportação do Meta Ads)"
+      "legenda": "campanha regional Sul da Bahia: R$ 6,75 contra R$ 21,59 da média da conta, de 01/08 a 01/10/2026 (exportação do Meta Ads)",
+      "case": "midia-paga"
     }
   ],
   "sobre": [

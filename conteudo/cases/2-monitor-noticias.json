@@ -2,7 +2,7 @@
   "slug": "monitor-noticias",
   "titulo": "Monitor de notícias políticas com Airflow, Kafka e PostgreSQL",
   "categoria": "Pipeline de dados",
-  "contexto": "Campanha ao Governo de Rondônia · 83 fontes de notícia do estado · 2026",
+  "contexto": "Campanha ao Governo de Rondônia · 83 fontes de notícia mapeadas · 2026",
   "resumo": "Pipeline que coleta de hora em hora as matérias dos portais de Rondônia, classifica sentimento, tema e município, grava no PostgreSQL e avisa a equipe quando surge notícia negativa.",
   "destaque": {
     "valor": "1 h",
@@ -58,13 +58,14 @@
   ],
   "decisao": {
     "titulo": "Por que Kafka entre a coleta e a gravação",
-    "texto": "A coleta depende de dezenas de portais que caem, mudam de endereço ou respondem devagar, e a classificação por modelo de linguagem leva tempo por matéria. Com o Kafka no meio, a coleta só publica no tópico e termina; o consumer processa no ritmo dele. Se a classificação falha, as matérias continuam no tópico e são processadas na próxima execução, sem refazer a coleta."
+    "texto": "A coleta depende de dezenas de portais que caem, mudam de endereço ou respondem devagar, e a classificação por modelo de linguagem leva tempo por matéria. Com o Kafka no meio, a coleta só publica no tópico e termina, e o consumer processa no ritmo dele. Em caso de falha, o reprocessamento depende de como o consumer confirma e retoma a leitura das mensagens: nesta versão a confirmação é automática, então a recuperação não é garantida."
   },
   "codigo": {
     "trecho": "with DAG(\n    dag_id=\"monitor_politico_ro\",\n    schedule_interval=\"0 * * * *\",   # de hora em hora\n    catchup=False,\n) as dag:\n    coletar = PythonOperator(task_id=\"coletar_e_publicar\", python_callable=run_producer)\n    processar = PythonOperator(task_id=\"enriquecer_e_gravar\", python_callable=run_consumer)\n\n    coletar >> processar",
     "legenda": "DAG do Airflow: a coleta publica no Kafka e só depois o consumer enriquece e grava no PostgreSQL."
   },
   "limitacoes": [
+    "O consumer confirma a leitura das mensagens automaticamente. Para garantir que nenhuma matéria se perca numa falha, a confirmação teria de ser manual e feita só depois da gravação no PostgreSQL; como a gravação ignora matérias repetidas, reprocessar seria seguro.",
     "O classificador por palavras-chave, usado quando não há chave de API, é grosseiro: conta palavras positivas e negativas e não entende ironia nem contexto.",
     "Nem todo portal tem RSS; os que não têm ficam de fora, e as páginas de Instagram e Facebook precisariam de coleta própria pela API oficial.",
     "Por direito autoral, o banco guarda só título, resumo curto e link, não o texto integral das matérias."

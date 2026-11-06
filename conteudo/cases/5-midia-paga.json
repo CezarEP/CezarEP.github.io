@@ -4,7 +4,10 @@
   "categoria": "Análise de performance",
   "contexto": "Agência Luz e Produtora Sangue Novo · campanhas a deputado federal e estadual (BA) · mai–out 2026",
   "resumo": "Leitura diária das contas de Meta Ads para achar onde a verba rendia mais por pessoa alcançada e realocar o orçamento com base no dado.",
-  "destaque": { "valor": "69%", "legenda": "menos custo por mil pessoas alcançadas na campanha regional Sul da Bahia do que na média da conta" },
+  "destaque": {
+    "valor": "69%",
+    "legenda": "menos custo por mil pessoas alcançadas na campanha regional Sul da Bahia do que na média da conta"
+  },
   "periodo": "Maio a outubro de 2026",
   "papel": "Estrategista de mídia paga: análise das contas, desenho das campanhas e recomendação de verba",
   "status": "Campanhas encerradas com a eleição",
@@ -24,12 +27,61 @@
     "Na conta do deputado estadual, R$ 15.852,58 foram investidos de 01/06 a 31/10/2026.",
     "A base de contatos da mensageria passou de 1.554 registros brutos para 1.081 números válidos, 456 deles recuperados por normalização."
   ],
+  "tabela": {
+    "titulo": "Deputado federal · 01/08 a 01/10/2026 · exportação do Meta Ads",
+    "colunas": [
+      "Campanha",
+      "Investimento",
+      "% da verba",
+      "Pessoas alcançadas",
+      "Custo por mil pessoas"
+    ],
+    "linhas": [
+      [
+        "Sul da Bahia (regional, alcance)",
+        "R$ 2.358,19",
+        "9,8%",
+        "349.566",
+        "R$ 6,75"
+      ],
+      [
+        "Conteúdos Estratégicos (alcance)",
+        "R$ 12.469,98",
+        "51,6%",
+        "738.271",
+        "R$ 16,89"
+      ],
+      [
+        "Conteúdos Estratégicos (visualização de vídeo)",
+        "R$ 5.714,47",
+        "23,7%",
+        "180.750",
+        "R$ 31,62"
+      ],
+      [
+        "Conta inteira (9 campanhas)",
+        "R$ 24.158,68",
+        "100%",
+        "1.118.773",
+        "R$ 21,59"
+      ]
+    ],
+    "nota": "As três maiores campanhas da conta e o total. O alcance da conta inteira conta cada pessoa uma vez só, por isso não é a soma das linhas."
+  },
   "medicao": "Custo por mil pessoas alcançadas = valor gasto ÷ alcance × 1.000, tirado da exportação do Gerenciador de Anúncios para o período inteiro de cada conta. A comparação é da campanha regional com a média da conta inteira, que inclui a própria campanha; não é um antes e depois. Alcances de campanhas diferentes não foram somados, porque a mesma pessoa pode ter sido alcançada por mais de uma.",
   "limitacoes": [
     "A exportação separa a entrega só por estado; a entrega fora dos municípios-alvo dentro da Bahia não aparece nela.",
     "Custo por alcance mede eficiência de entrega, não voto nem mudança de opinião."
   ],
-  "tecnologias": ["Meta Ads", "Excel avançado", "Séries diárias", "Médias móveis", "Normalização de custo", "ManyChat", "LGPD"],
+  "tecnologias": [
+    "Meta Ads",
+    "Excel avançado",
+    "Séries diárias",
+    "Médias móveis",
+    "Normalização de custo",
+    "ManyChat",
+    "LGPD"
+  ],
   "evidencias": [
     "Exportações do Gerenciador de Anúncios da Meta das duas contas, com valor gasto, alcance e impressões por campanha, estado e dia.",
     "Os números deste case podem ser refeitos com essas exportações. Os relatórios entregues aos clientes não são publicados."

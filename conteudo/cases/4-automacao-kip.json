@@ -4,7 +4,10 @@
   "categoria": "Automação e aplicação web",
   "contexto": "KIP Viagens · compra de milhas aéreas em grupos do Telegram · 2025–2026",
   "resumo": "Um robô lê as ofertas de milhas nos grupos do Telegram, decide por regras se vale responder e calcula o preço pela tabela configurada num painel web.",
-  "destaque": { "valor": "0–100", "legenda": "pontuação por regras que decide se a mensagem é uma oferta real antes de responder" },
+  "destaque": {
+    "valor": "0–100",
+    "legenda": "pontuação por regras que decide se a mensagem é uma oferta real antes de responder"
+  },
   "periodo": "Março de 2025 a junho de 2026",
   "papel": "Desenvolvi o robô e o painel web: leitura das mensagens, regras de pontuação, tabela de preços, estoque e controle do robô",
   "status": "Usado na operação da KIP Viagens; sem demonstração pública no ar",
@@ -17,12 +20,75 @@
     "Construí um painel web em Flask com SQLite para gerenciar estoque, tabelas de preço por cliente e grupo, configuração do Telegram, início e parada do robô e registro das decisões."
   ],
   "fluxo": [
-    { "etapa": "Mensagem no grupo", "detalhe": "ex.: \"Vendo 80k Smiles, 2 CPFs\"" },
-    { "etapa": "Leitura", "detalhe": "companhia Smiles, 80.000 milhas, 2 CPFs, média de 40.000 milhas por CPF" },
-    { "etapa": "Pontuação", "detalhe": "+30 intenção de venda (\"vendo\"), +20 companhia, +20 milhas, +15 CPF explícito = 85 pontos" },
-    { "etapa": "Decisão", "detalhe": "85 passa da pontuação mínima do modo conservador (80), então o robô segue" },
-    { "etapa": "Preço", "detalhe": "na tabela da Smiles, a faixa de até 49.999 milhas por CPF dá R$ 17,50 o milheiro, e o robô responde com esse valor" }
+    {
+      "etapa": "Mensagem no grupo",
+      "detalhe": "ex.: \"Vendo 80k Smiles, 2 CPFs\""
+    },
+    {
+      "etapa": "Leitura",
+      "detalhe": "companhia Smiles, 80.000 milhas, 2 CPFs, média de 40.000 milhas por CPF"
+    },
+    {
+      "etapa": "Pontuação",
+      "detalhe": "+30 intenção de venda (\"vendo\"), +20 companhia, +20 milhas, +15 CPF explícito = 85 pontos"
+    },
+    {
+      "etapa": "Decisão",
+      "detalhe": "85 passa da pontuação mínima do modo conservador (80), então o robô segue"
+    },
+    {
+      "etapa": "Preço",
+      "detalhe": "na tabela de preços, a faixa de até 49.999 milhas por CPF da Smiles define o valor do milheiro (R$ 15,50 na tabela fictícia das telas abaixo), e o robô responde com esse valor"
+    }
   ],
+  "imagens": {
+    "titulo": "O painel de gestão",
+    "intro": "Telas do painel web rodando com dados fictícios. O registro de decisões não foi inventado: é a saída da própria função do robô aplicada a mensagens de exemplo.",
+    "credito": "Capturas feitas em 06/11/2026 numa cópia local do sistema, com contas, preços e grupos fictícios. Os dados reais da KIP Viagens não aparecem.",
+    "grupos": [
+      {
+        "etiqueta": "Painel",
+        "titulo": "Robô e decisões",
+        "texto": "Liga e desliga o robô, mostra o estoque de milhas por companhia e registra cada decisão com o motivo.",
+        "itens": [
+          {
+            "arquivo": "assets/cases/automacao-kip/painel-dashboard.png",
+            "largura": 1280,
+            "altura": 712,
+            "larga": true,
+            "fonte": "Tela inicial",
+            "alt": "Tela inicial do Miles Bot com o status do robô, o total de milhas disponíveis por companhia (Latam, Smiles e Azul, normais e com liminar) e o log do robô com linhas RESPONDEU e IGNOROU",
+            "legenda": "O log mostra a decisão para cada mensagem: respondeu, com companhia, milhas, CPFs, preço da tabela, preço pedido e pontuação; ou ignorou, com o motivo (anúncio bloqueado, mensagem sem companhia ou milhas, companhia sem preço)."
+          }
+        ]
+      },
+      {
+        "etiqueta": "Configuração",
+        "titulo": "Preços e estoque",
+        "texto": "O dono do negócio ajusta as regras sem mexer no código.",
+        "itens": [
+          {
+            "arquivo": "assets/cases/automacao-kip/painel-precos.png",
+            "largura": 1280,
+            "altura": 900,
+            "fonte": "Tabela de preços",
+            "alt": "Tela Minha Tabela de Preços com faixas por companhia: Latam, Smiles e Azul, cada faixa com tipo, limite de milhas, preço por mil milhas e status Ativa",
+            "legenda": "Faixas de preço por companhia e por quantidade de milhas por CPF. Cada faixa pode ser ligada ou desligada.",
+            "larga": true
+          },
+          {
+            "arquivo": "assets/cases/automacao-kip/painel-estoque.png",
+            "largura": 1280,
+            "altura": 450,
+            "fonte": "Estoque",
+            "alt": "Tela Contas de Estoque com as contas A, B, C e D e o saldo de milhas de cada companhia, com botões para importar CSV ou Excel e adicionar conta",
+            "legenda": "Estoque de milhas por conta e companhia, com importação por CSV ou Excel.",
+            "larga": true
+          }
+        ]
+      }
+    ]
+  },
   "resultados": [
     "As ofertas passaram a ser respondidas automaticamente, com o preço da tabela, sem cálculo manual a cada mensagem.",
     "Anúncios de concorrentes e mensagens institucionais deixaram de receber resposta, graças às penalidades da pontuação.",
@@ -40,9 +106,16 @@
     "As regras dependem de padrões de escrita; ofertas escritas de forma muito diferente podem receber pontuação baixa e ficar sem resposta.",
     "Os preços e faixas precisam ser atualizados à mão no painel quando o mercado muda."
   ],
-  "tecnologias": ["Python", "Telethon", "Flask", "SQLite", "Expressões regulares", "Telegram"],
+  "tecnologias": [
+    "Python",
+    "Telethon",
+    "Flask",
+    "SQLite",
+    "Expressões regulares",
+    "Telegram"
+  ],
   "evidencias": [
     "Código-fonte do robô e do painel web (versão 3).",
-    "Não há prints com dados reais: as telas mostram clientes, preços e contas da empresa. O exemplo deste case usa uma mensagem fictícia."
+    "As telas deste case vêm de uma cópia local do sistema com dados fictícios; contas, clientes e preços reais da empresa não são publicados."
   ]
 }

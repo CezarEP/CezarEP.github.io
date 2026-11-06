@@ -109,11 +109,16 @@ def card(caso, principal):
 def pagina_inicial(perfil, cases):
     c = perfil["contato"]
     nome = perfil["nome"].split()
-    metricas = "".join(
-        '<li>' + (f'<span class="area">{e(m["area"])}</span>' if m.get("area") else "")
-        + f'<span class="valor">{e(m["valor"])}</span>'
-        + (f'<span class="titulo">{e(m["titulo"])}</span>' if m.get("titulo") else "")
-        + f'<span class="legenda">{e(m["legenda"])}</span></li>' for m in perfil["metricas"])
+    metricas = ""
+    for m in perfil["metricas"]:
+        miolo = ((f'<span class="area">{e(m["area"])}</span>' if m.get("area") else "")
+                 + f'<span class="valor">{e(m["valor"])}</span>'
+                 + (f'<span class="titulo">{e(m["titulo"])}</span>' if m.get("titulo") else "")
+                 + f'<span class="legenda">{e(m["legenda"])}</span>')
+        if m.get("case"):
+            # o destaque inteiro leva ao case que o comprova
+            miolo = f'<a href="cases/{e(m["case"])}.html">{miolo}<span class="ir">Ver o case {ICONE_DIAG}</span></a>'
+        metricas += f"<li>{miolo}</li>"
     sobre = "".join(f"<p>{e(p)}</p>" for p in perfil["sobre"])
     empresas = "".join(f'<span class="e">{e(x)}</span>' for x in perfil.get("empresas", []))
     cards = "".join(card(caso, i == 0) for i, caso in enumerate(cases))
@@ -230,6 +235,14 @@ def pagina_case(perfil, cases, i):
     if caso.get("como_funciona"):
         como += lista(caso["como_funciona"])
     resultado = lista(caso["resultados"], "resultados")
+    if caso.get("tabela"):
+        tb = caso["tabela"]
+        cab = "".join(f'<th scope="col" class="{"n" if i else ""}">{e(c)}</th>' for i, c in enumerate(tb["colunas"]))
+        corpo = "".join("<tr>" + "".join(
+            (f'<th scope="row">{e(v)}</th>' if i == 0 else f'<td class="n">{e(v)}</td>') for i, v in enumerate(lin)) + "</tr>"
+            for lin in tb["linhas"])
+        resultado += (f'<div class="tabela"><table><caption>{e(tb["titulo"])}</caption><thead><tr>{cab}</tr></thead>'
+                      f'<tbody>{corpo}</tbody></table></div>' + (f'<p class="medicao">{e(tb["nota"])}</p>' if tb.get("nota") else ""))
     if caso.get("medicao"):
         resultado += f'<p class="medicao"><strong>Como foi medido:</strong> {e(caso["medicao"])}</p>'
     tecnico = ""
