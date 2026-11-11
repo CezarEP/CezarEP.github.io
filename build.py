@@ -270,10 +270,13 @@ def pagina_case(perfil, cases, i):
         imagens = (f'<div class="antes-depois"><div class="ad-cab"><h2>{e(g["titulo"])}</h2><p>{e(g["intro"])}</p></div>'
                    f'{grupos}<p class="credito">{e(g["credito"])} Toque numa imagem para ver em tamanho original.</p></div>')
     demo = ""
-    if caso.get("demo"):
-        dm = caso["demo"]
-        demo = (f'<div class="demo"><a class="pill" href="../{e(dm["url"])}">{e(dm["rotulo"])} {ICONE_DIAG}</a>'
-                f'<span>{e(dm["nota"])}</span></div>')
+    # "demo" pode ser um objeto ou uma lista; endereço externo (http) abre em nova aba
+    for dm in ([caso["demo"]] if isinstance(caso.get("demo"), dict) else caso.get("demo", [])):
+        ext = dm["url"].startswith("http")
+        href = e(dm["url"]) if ext else f'../{e(dm["url"])}'
+        alvo = ' target="_blank" rel="noopener"' if ext else ""
+        demo += (f'<div class="demo"><a class="pill" href="{href}"{alvo}>{e(dm["rotulo"])} {ICONE_DIAG}</a>'
+                 f'<span>{e(dm["nota"])}</span></div>')
     return (cabecalho(perfil, titulo, caso["resumo"], url, "../") + f"""
 <header class="topo"><div class="wrap"><div class="cartao">
 {nav(perfil, "../")}

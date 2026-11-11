@@ -288,3 +288,4 @@ p, ul, ol { margin: 0; }
   .navcases { grid-template-columns: 1fr; }
   .navcases .prox { grid-column: auto; text-align: left; }
 }
+.demo + .demo { margin-top: .6rem; }
