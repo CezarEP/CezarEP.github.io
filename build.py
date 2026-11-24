@@ -72,7 +72,7 @@ def nav(perfil, prefixo):
     nome = perfil["nome"].split()
     return f"""<div class="nav">
 <a class="marca" href="{prefixo or './'}">{e(nome[0])} {e(nome[-1])}</a>
-<nav class="menu" aria-label="Principal"><a href="{prefixo}#sobre">Sobre</a><a href="{prefixo}#cases">Cases</a><a href="{prefixo}#experiencia">Experiência</a></nav>
+<nav class="menu" aria-label="Principal"><a href="{prefixo}#sobre">Sobre</a><a href="{prefixo}#ia">IA</a><a href="{prefixo}#cases">Cases</a><a href="{prefixo}#experiencia">Experiência</a></nav>
 <div class="nav-acoes"><button class="tema" type="button" aria-label="Alternar tema">{ICONE_TEMA}</button><a class="pill" href="{prefixo}#contato">Fale comigo {ICONE_DIAG}</a></div>
 </div>"""
 
@@ -124,6 +124,22 @@ def pagina_inicial(perfil, cases):
     cards = "".join(card(caso, i == 0) for i, caso in enumerate(cases))
     tempo = "".join(f"""<li><span class="periodo">{e(x["periodo"])}</span><div class="quem"><h3>{e(x["empresa"])}</h3>
 <span class="cargo-x">{e(x["cargo"])}</span><span class="ctx">{e(x["contexto"])}</span></div><p>{e(x["resumo"])}</p></li>""" for x in perfil["experiencias"])
+    ia = perfil.get("ia_aplicada")
+    bloco_ia = ""
+    if ia:
+        itens_ia = ""
+        for x in ia["itens"]:
+            miolo = (f'<span class="ferr">{e(x["ferramenta"])}</span><h3>{e(x["titulo"])}</h3><p>{e(x["texto"])}</p>'
+                     + (f'<span class="ir">Ver o case {ICONE_DIAG}</span>' if x.get("case") else ""))
+            if x.get("case"):
+                miolo = f'<a href="cases/{e(x["case"])}.html">{miolo}</a>'
+            itens_ia += f"<li>{miolo}</li>"
+        bloco_ia = f"""
+<section class="secao" id="ia"><div class="wrap">
+<div class="cabeca"><div><span class="rotulo">Inteligência artificial</span><h2>IA aplicada</h2></div><p class="intro">{e(ia["intro"])}</p></div>
+<ul class="ia-lista">{itens_ia}</ul>
+</div></section>
+"""
     grupos = "".join(f'<div class="grupo"><h3>{e(g["grupo"])}</h3>{chips(g["itens"])}</div>' for g in perfil["habilidades"])
     formacao = ""
     for f in perfil["formacao"]:
@@ -142,7 +158,7 @@ def pagina_inicial(perfil, cases):
 {nav(perfil, "")}
 <div class="hero-grid" id="conteudo">
 <div class="hero-txt">
-<span class="rotulo">Dados · automação · processos</span>
+<span class="rotulo">Dados · automação · IA · processos</span>
 <h1 class="nome"><span>{e(nome[0])}<span class="brilho" aria-hidden="true">✦</span></span><span>{e(nome[-1])}</span></h1>
 <p class="cargo">{e(perfil["titulo"])}</p>
 <p class="complemento">{e(perfil["complemento"])}</p>
@@ -172,6 +188,7 @@ def pagina_inicial(perfil, cases):
 <div class="sobre"><p class="frase">Dado para decidir, <em>processo</em> para repetir.</p><div class="sobre-texto">{sobre}</div></div>
 </div></section>
 
+{bloco_ia}
 <section class="secao" id="cases"><div class="wrap">
 <div class="cabeca"><div><span class="rotulo">{len(cases)} cases</span><h2>Projetos</h2></div><p class="intro">Cada case mostra o problema, o que eu fiz, as ferramentas e o resultado. Documentos de clientes não são publicados.</p></div>
 <div class="cases">{cards}</div>

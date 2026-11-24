@@ -2,7 +2,7 @@
   "url_site": "https://cezarep.github.io/",
   "nome": "Cézar Santos Gonçalves",
   "titulo": "Analista de Dados e Automação",
-  "complemento": "Python, SQL e Power Platform aplicados à melhoria de processos.",
+  "complemento": "Python, SQL, Power Platform e IA aplicados à melhoria de processos.",
   "proposta": "Desenvolvo automações, aplicativos e painéis para reduzir atividades manuais, organizar informações e apoiar decisões.",
   "disponibilidade": "Disponível para trabalho 100% remoto",
   "descricao_seo": "Portfólio de Cézar Santos Gonçalves, analista de dados e automação: Python, SQL, Power BI, Power Apps e melhoria de processos. Disponível para trabalho remoto.",
@@ -39,7 +39,8 @@
   "sobre": [
     "Sou engenheiro de produção formado pela UESC e trabalho com dados, automação e processos.",
     "Atuei na indústria de celulose, no setor público, em agência de viagens e em campanhas eleitorais, sempre onde a operação precisava decidir rápido.",
-    "Programo em Python e Node.js, construo painéis em Power BI e aplicativos em Power Apps, e uso Lean Six Sigma para medir antes de mudar."
+    "Programo em Python e Node.js, construo painéis em Power BI e aplicativos em Power Apps, e uso Lean Six Sigma para medir antes de mudar.",
+    "Uso inteligência artificial como ferramenta de trabalho: modelos de linguagem para classificar texto em escala e o Claude Code para programar mais rápido, sempre com conferência humana do resultado."
   ],
   "empresas": [
     "Agência Luz",
@@ -127,6 +128,17 @@
       ]
     },
     {
+      "grupo": "IA aplicada",
+      "itens": [
+        "Claude Code",
+        "Claude",
+        "ChatGPT",
+        "OpenAI API",
+        "Classificação de texto com LLM",
+        "Engenharia de prompt"
+      ]
+    },
+    {
       "grupo": "Pipelines e infraestrutura",
       "itens": [
         "PostgreSQL",
@@ -167,5 +179,33 @@
     "github": "https://github.com/CezarEP",
     "cidade": "Salvador, BA"
   },
-  "curriculo_pdf": "assets/curriculo-cezar-santos-goncalves.pdf"
+  "curriculo_pdf": "assets/curriculo-cezar-santos-goncalves.pdf",
+  "ia_aplicada": {
+    "intro": "IA entra onde economiza tempo e o resultado pode ser conferido. Onde a decisão precisa ser explicada linha a linha, uso regras explícitas.",
+    "itens": [
+      {
+        "ferramenta": "OpenAI API",
+        "titulo": "Classificação de notícias",
+        "texto": "Um modelo da OpenAI (gpt-4o-mini) lê cada matéria e devolve sentimento, tema e município. Sem chave de API, um classificador por palavras-chave assume, e o pipeline não para.",
+        "case": "monitor-noticias"
+      },
+      {
+        "ferramenta": "Claude Code",
+        "titulo": "Programação assistida",
+        "texto": "Usei o Claude como assistente de programação para escrever e revisar o código do robô de ofertas da KIP Viagens e para construir o gerador deste portfólio.",
+        "case": "automacao-kip"
+      },
+      {
+        "ferramenta": "ChatGPT e Claude",
+        "titulo": "Produtividade no dia a dia",
+        "texto": "Apoio para estruturar análises, documentar processos e revisar textos. Números e fatos são sempre conferidos na fonte antes de sair."
+      },
+      {
+        "ferramenta": "Critério",
+        "titulo": "Quando não usar IA",
+        "texto": "No robô da KIP, o dono precisava entender por que cada mensagem foi respondida. Por isso a decisão ficou com regras e pontuação transparentes, e não com um modelo.",
+        "case": "automacao-kip"
+      }
+    ]
+  }
 }

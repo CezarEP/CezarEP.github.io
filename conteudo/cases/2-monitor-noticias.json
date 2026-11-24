@@ -1,7 +1,7 @@
 {
   "slug": "monitor-noticias",
   "titulo": "Monitor de notícias políticas com Airflow, Kafka e PostgreSQL",
-  "categoria": "Pipeline de dados",
+  "categoria": "Pipeline de dados com IA",
   "contexto": "Campanha ao Governo de Rondônia · 83 fontes de notícia mapeadas · 2026",
   "resumo": "Pipeline que coleta de hora em hora as matérias dos portais de Rondônia, classifica sentimento, tema e município, grava no PostgreSQL e avisa a equipe quando surge notícia negativa.",
   "destaque": {
@@ -21,7 +21,7 @@
     "Mapeei 83 fontes de notícia do estado (76 portais e 7 páginas de redes sociais) e transformei o mapa num arquivo de configuração.",
     "Escrevi a coleta por RSS dos portais e pela API do GNews, com filtro que só deixa passar matérias que citam o candidato, um adversário ou um tema da campanha.",
     "Separei coleta e processamento com Kafka: um producer publica as matérias num tópico e um consumer as enriquece e grava.",
-    "Classifiquei cada matéria por sentimento, tema e município, com um modelo de linguagem quando há chave de API e um classificador por palavras-chave como alternativa.",
+    "Classifiquei cada matéria por sentimento, tema e município, com um modelo de linguagem da OpenAI (gpt-4o-mini) quando há chave de API e um classificador por palavras-chave como alternativa.",
     "Gravei tudo no PostgreSQL sem duplicar, disparei alertas no Slack ou no Telegram para matérias negativas novas e montei um painel em Streamlit.",
     "Orquestrei as etapas no Airflow, de hora em hora, e empacotei o ambiente em Docker Compose."
   ],
@@ -72,14 +72,14 @@
   ],
   "tecnologias": [
     "Python",
+    "OpenAI API",
     "Apache Airflow",
     "Apache Kafka",
     "PostgreSQL",
     "Docker Compose",
     "Streamlit",
     "RSS",
-    "GNews API",
-    "OpenAI API"
+    "GNews API"
   ],
   "evidencias": [
     "Demonstração com coleta real em 06/11/2026: os scripts de extração e classificação do projeto leram 519 matérias de 38 portais com RSS e mantiveram 360 relevantes. Essa execução rodou em Python direto, sem Airflow, Kafka e PostgreSQL.",

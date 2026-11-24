@@ -17,7 +17,8 @@
     "Criei uma pontuação de 0 a 100 por regras: soma pontos para intenção de venda, companhia, milhas, CPFs e preço; tira pontos de bloqueios, anúncios e mensagens institucionais.",
     "Defini três modos de operação (conservador, equilibrado e agressivo), cada um com uma pontuação mínima para responder.",
     "Calculei o preço pela tabela de cada companhia, por faixa de milhas por CPF, com faixas que podem ser ligadas e desligadas.",
-    "Construí um painel web em Flask com SQLite para gerenciar estoque, tabelas de preço por cliente e grupo, configuração do Telegram, início e parada do robô e registro das decisões."
+    "Construí um painel web em Flask com SQLite para gerenciar estoque, tabelas de preço por cliente e grupo, configuração do Telegram, início e parada do robô e registro das decisões.",
+    "Usei o Claude como assistente de programação para escrever, revisar e corrigir o código, o que acelerou o desenvolvimento sem tirar de mim as decisões de regra e de negócio."
   ],
   "fluxo": [
     {
@@ -112,7 +113,8 @@
     "Flask",
     "SQLite",
     "Expressões regulares",
-    "Telegram"
+    "Telegram",
+    "Claude (assistente de código)"
   ],
   "evidencias": [
     "Código-fonte do robô e do painel web (versão 3).",
