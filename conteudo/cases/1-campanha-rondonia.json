@@ -3,7 +3,7 @@
   "titulo": "Inteligência de dados e processos na campanha ao Governo de Rondônia",
   "categoria": "Dados e automação · operação completa",
   "contexto": "Campanha ao Governo de Rondônia · equipe de 30 pessoas em 5 núcleos · ago–out 2026",
-  "resumo": "Coleta de 27.148 comentários pela API da Meta, painel único para a moderação e decupagem automática de vídeos para a campanha decidir mais rápido.",
+  "resumo": "Coleta de 27.148 comentários pela API da Meta, painel único para a moderação, dashboard de conteúdos em Looker Studio e decupagem automática de vídeos para a campanha decidir mais rápido.",
   "destaque": {
     "valor": "45 → 12 min",
     "legenda": "tempo de atualização do painel que reúne os comentários de todos os posts, da primeira versão à versão em uso"

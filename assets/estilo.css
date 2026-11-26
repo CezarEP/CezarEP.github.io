@@ -303,3 +303,9 @@ p, ul, ol { margin: 0; }
 .ia-lista li > a:hover .ir { text-decoration: underline; }
 @media (max-width: 1000px) { .ia-lista { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .ia-lista { grid-template-columns: 1fr; } }
+
+/* links de demonstração nos cartões de case */
+.card-demos { display: flex; flex-wrap: wrap; gap: .5rem; position: relative; z-index: 2; }
+.card-demos a { display: inline-flex; align-items: center; gap: .35rem; padding: .45rem .85rem; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; text-decoration: none; }
+.card-demos a:hover, .card-demos a:focus-visible { background: var(--accent); color: var(--card); }
+.card-demos svg { width: .85rem; height: .85rem; }

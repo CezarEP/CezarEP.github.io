@@ -98,6 +98,14 @@ def card(caso, principal):
 <h3><a href="cases/{e(caso["slug"])}.html">{e(caso["titulo"])}</a></h3>
 <p class="contexto">{e(caso["contexto"])}</p>
 <p class="resumo">{e(caso["resumo"])}</p>"""
+    demos = [caso["demo"]] if isinstance(caso.get("demo"), dict) else caso.get("demo", [])
+    if demos:
+        links = ""
+        for dm in demos:
+            externo = dm["url"].startswith("http")
+            alvo = ' target="_blank" rel="noopener"' if externo else ""
+            links += f'<a href="{e(dm["url"])}"{alvo}>{e(dm["rotulo"])} {ICONE_DIAG}</a>'
+        corpo += f'<div class="card-demos">{links}</div>'
     bloco_destaque = f"""<div class="destaque"><span class="valor">{e(destaque["valor"])}</span><span class="legenda">{e(destaque["legenda"])}</span></div>"""
     rodape_card = f"""{chips(caso["tecnologias"][:5])}<span class="ver" aria-hidden="true">Ver case {ICONE_DIAG}</span>"""
     if principal:
